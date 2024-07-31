@@ -65,8 +65,9 @@ header nav ul li a:hover {
 
 #home {
     background: inherit;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-bottom: -45%;
 }
 
 .skills-container, .experience-container, .projects-container {
@@ -102,4 +103,17 @@ html {
 
 body {
     scroll-snap-type: y mandatory;
+}
+
+/* Cursor effect styles */
+#cursor-effect {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #f1c40f51 0%, rgba(255,189,51,0) 50%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    transition: left 0s, top 0s;
 }

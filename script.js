@@ -15,4 +15,12 @@ window.addEventListener('scroll', () => {
     const newColorHex = `rgb(${newColor.r}, ${newColor.g}, ${newColor.b})`;
 
     header.style.backgroundColor = newColorHex;
+    cursorEffect.style.top = `${scrollY}px`;
+    
+});
+
+document.addEventListener('mousemove', (e) => {
+    const cursorEffect = document.getElementById('cursor-effect');
+    cursorEffect.style.left = `${e.clientX + window.scrollX}px`;
+    cursorEffect.style.top = `${e.clientY + window.scrollY}px`;
 });
