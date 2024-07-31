@@ -1,0 +1,98 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background: linear-gradient(180deg, #19141F, #4D637C);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    height: 5%;
+    width: 100%;
+    /* background: rgba(0, 0, 0, 0.9); */
+    transition: background 0.2s;
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+header nav ul li {
+    margin: 1rem 1rem 0;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-family: 'Pixelify Sans', sans-serif;
+}
+
+header nav ul li a:hover {
+    color: #ffbd33;
+}
+
+.section h1 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-family: 'Pixelify Sans', sans-serif;
+    color: #ffbd33;
+}
+
+.section {
+    padding: 100px 20px;
+    min-height: 100vh;
+    text-align: center;
+    scroll-snap-align: start;
+    background: inherit;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+#home {
+    background: inherit;
+}
+
+.skills-container, .experience-container, .projects-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+form input, form textarea, form button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #f4d03f;
+    color: #000;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #f1c40f;
+}
+
+/* Ensure sections are scrollable */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    scroll-snap-type: y mandatory;
+}
