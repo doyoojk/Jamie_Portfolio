@@ -2,6 +2,7 @@ body {
     font-family: 'Quicksand', sans-serif;
     font-weight: 300;
     background: linear-gradient(180deg, #19141F, #4D637C);
+    /* background: linear-gradient(180deg, #19141F,#60c4ff ); */
     color: #fff;
     margin: 0;
     padding: 0;
@@ -14,7 +15,7 @@ header {
     height: 5%;
     width: 100%;
     /* background: rgba(0, 0, 0, 0.9); */
-    transition: background 0.2s;
+    transition: background 0.3s;
     z-index: 1000;
     display: flex;
     justify-content: flex-end;
@@ -71,10 +72,14 @@ header nav ul li a:hover {
 
 #home {
     background: inherit;
-    margin-top: 5%;
+    margin-top: 10%;
     margin-left: 30%;
     margin-right: 30%;
-    margin-bottom: -30%;
+    margin-bottom: -20%;
+}
+
+#skills{
+    margin-bottom: -10%;
 }
 
 .skills-container, .experience-container, .projects-container {
@@ -123,4 +128,25 @@ body {
     transform: translate(-50%, -50%);
     z-index: 9999;
     transition: left 0s, top 0s;
+}
+
+.skills-container {
+    margin-top: 6%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.skills-image {
+    margin-left: 4%;
+    width: 65%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.skills-image img{
+    width: 100%;
+    height: auto;
 }
