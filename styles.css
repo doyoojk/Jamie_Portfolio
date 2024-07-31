@@ -1,5 +1,6 @@
 body {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
     background: linear-gradient(180deg, #19141F, #4D637C);
     color: #fff;
     margin: 0;
@@ -33,19 +34,23 @@ header nav ul li {
 header nav ul li a {
     color: #fff;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-family: 'Pixelify Sans', sans-serif;
 }
 
 header nav ul li a:hover {
-    color: #ffbd33;
+    color:#33ffbd;
 }
 
-.section h1 {
+.section h1, .section h2 {
     margin-bottom: 1rem;
     font-size: 2rem;
     font-family: 'Pixelify Sans', sans-serif;
     color: #ffbd33;
+}
+
+.highlight-text {
+    color: #ff4397;
 }
 
 .section {
@@ -54,12 +59,14 @@ header nav ul li a:hover {
     text-align: center;
     scroll-snap-align: start;
     background: inherit;
-    margin-left: 30%;
-    margin-right: 30%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 #home {
     background: inherit;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 .skills-container, .experience-container, .projects-container {
