@@ -5,6 +5,7 @@ body {
     color: #fff;
     margin: 0;
     padding: 0;
+    font-size: 1.6rem;
 }
 
 header {
@@ -28,13 +29,13 @@ header nav ul {
 }
 
 header nav ul li {
-    margin: 1rem 1rem 0;
+    margin: 1rem 1.5rem 0;
 }
 
 header nav ul li a {
     color: #fff;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     font-family: 'Pixelify Sans', sans-serif;
 }
 
@@ -44,13 +45,18 @@ header nav ul li a:hover {
 
 .section h1, .section h2 {
     margin-bottom: 1rem;
-    font-size: 2rem;
+    font-size: 2.8rem;
     font-family: 'Pixelify Sans', sans-serif;
     color: #ffbd33;
 }
 
 .highlight-text {
     color: #ff4397;
+}
+
+.header-highlight {
+    color: #ffffff;
+    font-size: 3rem;
 }
 
 .section {
@@ -65,9 +71,10 @@ header nav ul li a:hover {
 
 #home {
     background: inherit;
+    margin-top: 5%;
     margin-left: 30%;
     margin-right: 30%;
-    margin-bottom: -45%;
+    margin-bottom: -30%;
 }
 
 .skills-container, .experience-container, .projects-container {
