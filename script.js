@@ -1,3 +1,12 @@
+let lastMouseX = 0;
+let lastMouseY = 0;
+
+const updateCursorEffectPosition = () => {
+    const cursorEffect = document.getElementById('cursor-effect');
+    cursorEffect.style.left = `${lastMouseX + window.scrollX}px`;
+    cursorEffect.style.top = `${lastMouseY + window.scrollY}px`;
+};
+
 window.addEventListener('scroll', () => {
     const header = document.getElementById('header');
     const scrollY = window.scrollY;
@@ -15,12 +24,15 @@ window.addEventListener('scroll', () => {
     const newColorHex = `rgb(${newColor.r}, ${newColor.g}, ${newColor.b})`;
 
     header.style.backgroundColor = newColorHex;
-    cursorEffect.style.top = `${scrollY}px`;
-    
+
+    // Update cursor effect position on scroll
+    updateCursorEffectPosition();
 });
 
 document.addEventListener('mousemove', (e) => {
-    const cursorEffect = document.getElementById('cursor-effect');
-    cursorEffect.style.left = `${e.clientX + window.scrollX}px`;
-    cursorEffect.style.top = `${e.clientY + window.scrollY}px`;
+    lastMouseX = e.clientX;
+    lastMouseY = e.clientY;
+
+    // Update cursor effect position on mouse move
+    updateCursorEffectPosition();
 });
