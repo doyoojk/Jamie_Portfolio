@@ -181,8 +181,8 @@ body {
 
 .ghost-area {
     position: absolute;
-    width: 30px; /* Match ghostSize */
-    height: 30px; /* Match ghostSize */
+    width: 45px; /* Match ghostSize */
+    height: 45px; /* Match ghostSize */
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.1);
     transition: all 0.3s;
