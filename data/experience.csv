@@ -1,0 +1,12 @@
+content-tab,Walmart,Aptor,MyInfluency,Cyram
+content-header,Walmart Global Tech | Software Engineer Intern,Aptor | Frontend Engineer,MyInfluency | Frontend Engineer Intern,Cyram | Data Analyst Intern
+content-date,"June – Aug 2022",Jul 2022 - May 2023,"Jan – Apr 2022"," Jul – Aug 2020"
+content-description,"- Engineered and automated an intuitive application leveraging Walmart’s vendor maintenance data
+- Integrated REST APIs for real-time data sync to AzureSQL Database, enabling Live-Connection to Tableau for dynamic visualization; achieved Automated Data Flow and eliminated manual processes.
+","- Pioneered the prototype launch version of Aptor, a platform to reduce the friction in buying and selling South Korean entertainment licenses. 
+- Worked closely with frontend and backend engineers in an agile environment to remodel the processing of licensing agreements utilizing HTML, CSS, JavaScript, and React.
+","- Built MyInfluency’s Campaign page which helps connect local businesses to look for different campaigns available by influencers. 
+- Organized a user-friendly interface as a Frontend developer using HTML, CSS, and JavaScript, and also integrated RESTful APIs to dynamically fetch and display campaign data.
+","- Launched a Python extension for Cyram’s NetMiner program using web-scraping technology and analyzing data from social media platforms. 
+- Digitized official tutorials for NetMiner with now 7k views on YouTube. 
+"

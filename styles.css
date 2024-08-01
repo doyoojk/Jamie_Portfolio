@@ -151,25 +151,43 @@ body {
     height: auto;
 }
 
-.experience-panel {
+.experience-container {
+    margin-top: 6%;
     display: flex;
-    background-color: #333;
+    justify-content: center;
+    align-items: center;
+}
+
+.experience-panel {
+    opacity: 80%;
+    display: flex;
+    background-color: #31384E;
     color: white;
-    height: 300px; /* Adjust height as needed */
+    height: 800px; /* Adjust height as needed */
     width: 70%; /* Adjust width as needed */
     margin: auto; /* Center the panel */
+    border-top: rgb(0, 255, 255) 1px solid;
+    border-right: rgb(0, 255, 255) 1px solid;
+    border-bottom: rgb(0, 255, 255) 1px solid;
 }
 
 .tabs {
-    background-color: #252525;
+    background-color: #211d30;
     width: 25%; /* Adjust width of tabs */
     display: flex;
     flex-direction: column;
+    border-right: rgb(0, 255, 255) 1px solid;
+    border-left: rgb(0, 255, 255) 1px solid;
 }
 
-.tab {
-    padding: 16px;
-    border: none;
+.tab-button {
+    height: 15%;
+    font-family: 'Pixelify Sans', sans-serif;
+    color: white;
+    font-size: 2rem;
+    padding: 10%;
+    padding-bottom: 20%;
+    border-bottom: rgb(0, 255, 255) 1px solid;
     text-align: left;
     background: none;
     outline: none;
@@ -177,7 +195,7 @@ body {
     transition: background-color 0.3s;
 }
 
-.tab:hover {
+.tab-button:hover {
     background-color: #575757;
 }
 
@@ -185,18 +203,32 @@ body {
     display: none;
     padding: 20px;
     width: 75%; /* Adjust content area */
-    border-left: 1px solid gray;
+}
+
+.tab-button img {
+    height: 40px;
+    vertical-align: middle;
+    padding-right: 5%;
 }
 
 .content-header {
-    font-size: 1.2em;
+    font-size: 2.5rem;
     font-weight: bold;
+    border-bottom: rgb(0, 255, 255) 1px solid;
+    padding-bottom: 2%;
 }
 
 .content-date {
-    margin-top: 10px;
+    text-align: right;
+    font-weight: bold;  
+    padding-right: 5%;
+    padding-top: 2.5%;
 }
 
 .content-description {
     margin-top: 20px;
+    text-align: left;
+    font-size: 2rem;
+    padding-left: 15%;
+    padding-right: 15%;
 }
