@@ -151,77 +151,52 @@ body {
     height: auto;
 }
 
-#maze-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    opacity: 0.15;
-    pointer-events: none;
-    z-index: -1;
+.experience-panel {
+    display: flex;
+    background-color: #333;
+    color: white;
+    height: 300px; /* Adjust height as needed */
+    width: 70%; /* Adjust width as needed */
+    margin: auto; /* Center the panel */
 }
 
-.maze-path {
-    position: absolute;
-    background-color: #2121de;
-    opacity: 0.6;
+.tabs {
+    background-color: #252525;
+    width: 25%; /* Adjust width of tabs */
+    display: flex;
+    flex-direction: column;
 }
 
-.maze-dot {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background-color: #ffffff;
-    border-radius: 50%;
-    opacity: 0.7;
-}
-
-@keyframes pulsate {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.2);
-        opacity: 0.2;
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-.ghost-area {
-    position: absolute;
-    width: 45px; /* Match ghostSize */
-    height: 45px; /* Match ghostSize */
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0)); /* Transparent gradient white circle */
-    transition: all 0.3s;
+.tab {
+    padding: 16px;
+    border: none;
+    text-align: left;
+    background: none;
+    outline: none;
     cursor: pointer;
-    animation: pulsate 2s infinite;
+    transition: background-color 0.3s;
 }
 
-.maze-path, .ghost-area {
-    transition: opacity 0.4s ease-in-out; /* Adjust duration and easing as needed */
+.tab:hover {
+    background-color: #575757;
 }
 
-.ghost-red:hover {
-    background-color: rgba(255, 0, 0, 0.7); /* Default red ghost */
-    box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+.tab-content {
+    display: none;
+    padding: 20px;
+    width: 75%; /* Adjust content area */
+    border-left: 1px solid gray;
 }
 
-.ghost-pink:hover {
-    background-color: rgba(255, 184, 255, 0.7); /* Pink ghost */
-    box-shadow: 0 0 15px rgba(255, 184, 255, 0.7);
+.content-header {
+    font-size: 1.2em;
+    font-weight: bold;
 }
 
-.ghost-cyan:hover {
-    background-color: rgba(0, 255, 255, 0.7); /* Cyan ghost */
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+.content-date {
+    margin-top: 10px;
 }
 
-.ghost-orange:hover {
-    background-color: rgba(255, 184, 82, 0.7); /* Orange ghost */
-    box-shadow: 0 0 15px rgba(255, 184, 82, 0.7);
+.content-description {
+    margin-top: 20px;
 }

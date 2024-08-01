@@ -1,0 +1,74 @@
+#maze-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.maze-path {
+    position: absolute;
+    background-color: #2121de;
+    opacity: 0.6;
+}
+
+.maze-dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    opacity: 0.7;
+}
+
+@keyframes pulsate {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.2;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.ghost-area {
+    position: absolute;
+    width: 45px; /* Match ghostSize */
+    height: 45px; /* Match ghostSize */
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0)); /* Transparent gradient white circle */
+    transition: all 0.3s;
+    cursor: pointer;
+    animation: pulsate 2s infinite;
+}
+
+.maze-path, .ghost-area {
+    transition: opacity 0.2s ease-in-out; /* Adjust duration and easing as needed */
+}
+
+.ghost-red:hover {
+    background-color: rgba(255, 0, 0, 0.7); /* Default red ghost */
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+}
+
+.ghost-pink:hover {
+    background-color: rgba(255, 184, 255, 0.7); /* Pink ghost */
+    box-shadow: 0 0 15px rgba(255, 184, 255, 0.7);
+}
+
+.ghost-cyan:hover {
+    background-color: rgba(0, 255, 255, 0.7); /* Cyan ghost */
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+}
+
+.ghost-orange:hover {
+    background-color: rgba(255, 184, 82, 0.7); /* Orange ghost */
+    box-shadow: 0 0 15px rgba(255, 184, 82, 0.7);
+}

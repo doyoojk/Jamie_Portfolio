@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jamie Kim</title>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&family=Quicksand:wght@300&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pacman.css">
 </head>
 <body>
     <header id="header">
@@ -44,6 +44,28 @@
             <h2>Experience</h2>
             <div class="experience-container">
                 <!-- Add your experience here -->
+                <div class="experience-panel">
+                    <div class="tabs">
+                        <button class="tab" onclick="openTab(event, 'Walmart')">Walmart</button>
+                        <button class="tab" onclick="openTab(event, 'MyInfluency')">MyInfluency</button>
+                        <button class="tab" onclick="openTab(event, 'Cyram')">Cyram</button>
+                    </div>
+                    <div class="tab-content" id="Walmart">
+                        <div class="content-header">Walmart Global Tech</div>
+                        <div class="content-date">Jan 2022 - April 2022</div>
+                        <div class="content-description">Working with the Frontend Engineering team using HTML, CSS, JavaScript, and React to create the prototype launch version for Aptor’s entertainment licensing platform. Aptor’s website is made to reduce the friction in buying and selling South Korean entertainment licenses.</div>
+                    </div>
+                    <div class="tab-content" id="MyInfluency" style="display:none;">
+                        <div class="content-header">MyInfluency</div>
+                        <div class="content-date">Dates Here</div>
+                        <div class="content-description">Description Here.</div>
+                    </div>
+                    <div class="tab-content" id="Cyram" style="display:none;">
+                        <div class="content-header">Cyram</div>
+                        <div class="content-date">Dates Here</div>
+                        <div class="content-description">Description Here.</div>
+                    </div>
+                </div>
             </div>
         </section>
         <section id="projects" class="section">
