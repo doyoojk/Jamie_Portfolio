@@ -9,13 +9,6 @@ const updateCursorEffectPosition = () => {
     cursorEffect.style.top = `${lastMouseY + window.scrollY}px`;
 };
 
-// Initialize the cursor effect position
-const initializeCursorEffectPosition = () => {
-    lastMouseX = e.clientX;
-    lastMouseY = e.clientY;
-    updateCursorEffectPosition();
-};
-
 // Function to fade out the existing maze and ghosts
 const fadeOutMazeAndGhosts = (callback) => {
     const mazePaths = document.querySelectorAll('.maze-path');
@@ -159,21 +152,38 @@ function createGhostAreas(grid) {
     const ghostSize = 45; // Ensure ghostSize < cellSize to fit nicely
     const ghostClasses = ['ghost-red', 'ghost-pink', 'ghost-cyan', 'ghost-orange'];
 
+    // Get the current section's y range
+    const currentSection = sections[currentSectionIndex];
+    const sectionStartY = currentSection.offsetTop;
+    const sectionEndY = sectionStartY + currentSection.offsetHeight;
+
+    console.log(`Current section index: ${currentSectionIndex}`);
+    console.log(`Section start: ${sectionStartY}, end: ${sectionEndY}`);
+
     for (let i = 0; i < ghostCount; i++) {
         const ghost = document.createElement('div');
         ghost.className = `ghost-area ${ghostClasses[i]}`; // Assign a unique class
         main.appendChild(ghost);
         
-        // Find an open cell to place the ghost
-        let x, y;
+        // Find an open cell to place the ghost within the current section's y range
+        let x, y, centerY;
+        let attempts = 0;
         do {
             x = Math.floor(Math.random() * grid[0].length);
             y = Math.floor(Math.random() * grid.length);
-        } while (!grid[y][x]);  // Ensure it's an open cell (not blocked)
-        
+
+            // Calculate the centered position within the cell relative to the section
+            centerY = y * cellSize + (cellSize - ghostSize) / 2 + sectionStartY;
+            
+            attempts++;
+            if (attempts > 100) break; // Prevent infinite loop
+
+            // Log ghost position for debugging
+            console.log(`Ghost ${i} position: (${x}, ${y}) with centerY: ${centerY}`);
+        } while (!grid[y][x] || centerY < sectionStartY || centerY > sectionEndY); // Ensure it's an open cell and within section
+
         // Calculate the centered position within the cell
         const centerX = x * cellSize + (cellSize - ghostSize) / 2;
-        const centerY = y * cellSize + (cellSize - ghostSize) / 2;
         
         ghost.style.left = `${centerX}px`;
         ghost.style.top = `${centerY}px`;
@@ -220,18 +230,13 @@ window.addEventListener('scroll', () => {
 
 // Mousemove event listener
 document.addEventListener('mousemove', (e) => {
+    cursorEffect.style.opacity = 1; // Show the cursor effect
     lastMouseX = e.clientX;
     lastMouseY = e.clientY;
 
     // Update cursor effect position on mouse move
     updateCursorEffectPosition();
 });
-
-// Initialize cursor position on the first mouse movement
-document.addEventListener('mousemove', (e) => {
-    initializeCursorEffectPosition(e);
-}, { once: true });
-
 
 window.addEventListener('load', () => {
     updateSectionOffsets(); // Initial calculation of section offsets

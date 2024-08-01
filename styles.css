@@ -127,7 +127,7 @@ body {
     transform: translate(-50%, -50%);
     z-index: 9999;
     transition: opacity 1s ease-in-out, left 0s, top 0s;
-    opacity: 1;
+    opacity: 0;
 }
 
 .skills-container {
