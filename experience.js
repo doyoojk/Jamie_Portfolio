@@ -29,8 +29,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 contentDiv.style.display = 'none'; // Hide all except the first by default
 
                 contentDiv.innerHTML = `
-                    <div class="content-header">${header}</div>
-                    <div class="content-date">${date}</div>
+                    <class="content-header">
+                        <span class="header-text">${header}</span>
+                        <span class="date-text">${date}</span>
+                    </div>
                     <div class="content-description">${description}</div>
                 `;
 
