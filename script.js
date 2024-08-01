@@ -2,7 +2,6 @@ let lastMouseX = 0;
 let lastMouseY = 0;
 const cursorEffect = document.getElementById('cursor-effect');
 const homeSection = document.getElementById('home');
-const skillsSection = document.getElementById('skills');
 
 // Update cursor effect position based on mouse position
 const updateCursorEffectPosition = () => {
@@ -19,6 +18,33 @@ const fadeOutCursorEffect = () => {
 const fadeInCursorEffect = () => {
     cursorEffect.style.opacity = 1; // Fade in
 };
+
+// Function to regenerate ghosts
+const regenerateGhosts = () => {
+    document.querySelectorAll('.ghost-area').forEach(ghost => ghost.remove());
+    const grid = createMazePaths(); // Optionally recreate maze paths as well
+    createGhostAreas(grid);
+};
+
+// Initialize sections' top offsets
+const sections = document.querySelectorAll('.section');
+let sectionOffsets = [];
+
+const updateSectionOffsets = () => {
+    const buffer = 100; // Adjust this value as needed
+    sectionOffsets = Array.from(sections).map(section => {
+        const style = window.getComputedStyle(section);
+        const marginTop = parseInt(style.marginTop, 10) || 0;
+        const marginBottom = parseInt(style.marginBottom, 10) || 0;
+        const offsetTop = section.offsetTop;
+        return {
+            start: offsetTop - marginTop - buffer, // Adjust for top margin and buffer
+            end: offsetTop + section.offsetHeight + marginBottom - buffer // Adjust for bottom margin and buffer
+        };
+    });
+};
+
+let currentSectionIndex = 0;
 
 // Scroll event listener
 window.addEventListener('scroll', () => {
@@ -40,7 +66,7 @@ window.addEventListener('scroll', () => {
     header.style.backgroundColor = newColorHex;
 
     // Check if the scroll position is below the top of the skills section
-    const homeSectionBottom = homeSection.offsetHeight + parseInt(window.getComputedStyle(homeSection).marginBottom);
+    const homeSectionBottom = homeSection.offsetHeight + parseInt(window.getComputedStyle(homeSection).marginBottom, 10);
     if (scrollY >= homeSectionBottom) {
         fadeOutCursorEffect();
     } else {
@@ -49,6 +75,17 @@ window.addEventListener('scroll', () => {
 
     // Update cursor effect position on scroll
     updateCursorEffectPosition();
+
+    // Check if the user has scrolled into a new section
+    for (let i = 0; i < sectionOffsets.length; i++) {
+        if (scrollY >= sectionOffsets[i].start && scrollY < sectionOffsets[i].end) {
+            if (i !== currentSectionIndex) {
+                currentSectionIndex = i;
+                regenerateGhosts();
+            }
+            break;
+        }
+    }
 });
 
 // Mousemove event listener
@@ -62,6 +99,8 @@ document.addEventListener('mousemove', (e) => {
 
 function createMazePaths() {
     const mazeBackground = document.getElementById('maze-background');
+    mazeBackground.innerHTML = ''; // Clear existing paths
+
     const cellSize = 80;
     const rows = Math.ceil(window.innerHeight / cellSize);
     const cols = Math.ceil(window.innerWidth / cellSize);
@@ -75,7 +114,7 @@ function createMazePaths() {
     // Randomly block some paths
     for (let row = 0; row < rows; row++) {
         for (let col = 0; col < cols; col++) {
-            if (Math.random() < 0.35 && // 40% chance to block a cell
+            if (Math.random() < 0.35 && // 35% chance to block a cell
                 !(row === 1 && col === 1) && // Keep the top-left corner open
                 !(row % 2 === 1 && col % 2 === 1)) { // Keep intersections open for ghosts
                 grid[row][col] = 0;
@@ -175,17 +214,7 @@ function createGhostAreas(grid) {
 }
 
 window.addEventListener('load', () => {
-    const grid = createMazePaths();
-    createGhostAreas(grid);
-});
-
-window.addEventListener('resize', () => {
-    // Remove existing paths and ghosts
-    const mazeBackground = document.getElementById('maze-background');
-    mazeBackground.innerHTML = '';
-    document.querySelectorAll('.ghost-area').forEach(ghost => ghost.remove());
-    
-    // Recreate paths and ghosts
+    updateSectionOffsets(); // Initial calculation of section offsets
     const grid = createMazePaths();
     createGhostAreas(grid);
 });
