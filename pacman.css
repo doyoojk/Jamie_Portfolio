@@ -13,7 +13,7 @@
 .maze-path {
     position: absolute;
     background-color: #2121de;
-    opacity: 0.6;
+    opacity: 0.3;
 }
 
 .maze-dot {
@@ -44,13 +44,13 @@
     height: 45px; /* Match ghostSize */
     border-radius: 50%;
     background: radial-gradient(circle, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0)); /* Transparent gradient white circle */
-    transition: all 0.3s;
+    /* transition: all 0.3s; */
     cursor: pointer;
     animation: pulsate 2s infinite;
 }
 
 .maze-path, .ghost-area {
-    transition: opacity 0.2s ease-in-out; /* Adjust duration and easing as needed */
+    transition: opacity 0.6s ease; /* Adjust duration and easing as needed */
 }
 
 .ghost-red:hover {
