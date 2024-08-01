@@ -149,7 +149,7 @@ function createGhostAreas(grid) {
     const ghostCount = 4;
     const main = document.querySelector('main');
     const cellSize = 80;  // Match this with your cell size in the maze
-    const ghostSize = 30; // Ensure ghostSize < cellSize to fit nicely
+    const ghostSize = 45; // Ensure ghostSize < cellSize to fit nicely
     
     for (let i = 0; i < ghostCount; i++) {
         const ghost = document.createElement('div');
