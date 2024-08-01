@@ -9,14 +9,11 @@ const updateCursorEffectPosition = () => {
     cursorEffect.style.top = `${lastMouseY + window.scrollY}px`;
 };
 
-// Fade out the cursor effect
-const fadeOutCursorEffect = () => {
-    cursorEffect.style.opacity = 0; // Fade out
-};
-
-// Fade in the cursor effect
-const fadeInCursorEffect = () => {
-    cursorEffect.style.opacity = 1; // Fade in
+// Initialize the cursor effect position
+const initializeCursorEffectPosition = () => {
+    lastMouseX = e.clientX;
+    lastMouseY = e.clientY;
+    updateCursorEffectPosition();
 };
 
 // Function to fade out the existing maze and ghosts
@@ -67,57 +64,6 @@ const updateSectionOffsets = () => {
 };
 
 let currentSectionIndex = 0;
-
-// Scroll event listener
-window.addEventListener('scroll', () => {
-    const header = document.getElementById('header');
-    const scrollY = window.scrollY;
-    const documentHeight = document.body.scrollHeight - window.innerHeight;
-    const ratio = scrollY / documentHeight;
-
-    // Calculate intermediate color between #19141F and #4D637C
-    const startColor = { r: 25, g: 20, b: 31 };
-    const endColor = { r: 77, g: 99, b: 124 };
-    const newColor = {
-        r: Math.round(startColor.r + (endColor.r - startColor.r) * ratio),
-        g: Math.round(startColor.g + (endColor.g - startColor.g) * ratio),
-        b: Math.round(startColor.b + (endColor.b - startColor.b) * ratio),
-    };
-    const newColorHex = `rgb(${newColor.r}, ${newColor.g}, ${newColor.b})`;
-
-    header.style.backgroundColor = newColorHex;
-
-    // // Check if the scroll position is below the top of the skills section
-    // const homeSectionBottom = homeSection.offsetHeight + parseInt(window.getComputedStyle(homeSection).marginBottom, 10);
-    // if (scrollY >= homeSectionBottom) {
-    //     fadeOutCursorEffect();
-    // } else {
-    //     fadeInCursorEffect();
-    // }
-
-    // Update cursor effect position on scroll
-    updateCursorEffectPosition();
-
-    // Check if the user has scrolled into a new section
-    for (let i = 0; i < sectionOffsets.length; i++) {
-        if (scrollY >= sectionOffsets[i].start && scrollY < sectionOffsets[i].end) {
-            if (i !== currentSectionIndex) {
-                currentSectionIndex = i;
-                regenerateGhosts();
-            }
-            break;
-        }
-    }
-});
-
-// Mousemove event listener
-document.addEventListener('mousemove', (e) => {
-    lastMouseX = e.clientX;
-    lastMouseY = e.clientY;
-
-    // Update cursor effect position on mouse move
-    updateCursorEffectPosition();
-});
 
 function createMazePaths() {
     const mazeBackground = document.getElementById('maze-background');
@@ -235,6 +181,56 @@ function createGhostAreas(grid) {
         ghost.style.height = `${ghostSize}px`;
     }
 }
+
+//                                      EVENT LISTENERS 
+
+// Scroll event listener
+window.addEventListener('scroll', () => {
+    const header = document.getElementById('header');
+    const scrollY = window.scrollY;
+    const documentHeight = document.body.scrollHeight - window.innerHeight;
+    const ratio = scrollY / documentHeight;
+
+    // Calculate intermediate color between #19141F and #4D637C
+    const startColor = { r: 25, g: 20, b: 31 };
+    const endColor = { r: 77, g: 99, b: 124 };
+    const newColor = {
+        r: Math.round(startColor.r + (endColor.r - startColor.r) * ratio),
+        g: Math.round(startColor.g + (endColor.g - startColor.g) * ratio),
+        b: Math.round(startColor.b + (endColor.b - startColor.b) * ratio),
+    };
+    const newColorHex = `rgb(${newColor.r}, ${newColor.g}, ${newColor.b})`;
+
+    header.style.backgroundColor = newColorHex;
+
+    // Update cursor effect position on scroll
+    updateCursorEffectPosition();
+
+    // Check if the user has scrolled into a new section
+    for (let i = 0; i < sectionOffsets.length; i++) {
+        if (scrollY >= sectionOffsets[i].start && scrollY < sectionOffsets[i].end) {
+            if (i !== currentSectionIndex) {
+                currentSectionIndex = i;
+                regenerateGhosts();
+            }
+            break;
+        }
+    }
+});
+
+// Mousemove event listener
+document.addEventListener('mousemove', (e) => {
+    lastMouseX = e.clientX;
+    lastMouseY = e.clientY;
+
+    // Update cursor effect position on mouse move
+    updateCursorEffectPosition();
+});
+
+// Initialize cursor position on the first mouse movement
+document.addEventListener('mousemove', (e) => {
+    initializeCursorEffectPosition(e);
+}, { once: true });
 
 
 window.addEventListener('load', () => {
