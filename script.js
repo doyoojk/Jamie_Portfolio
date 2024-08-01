@@ -26,7 +26,7 @@ const sections = document.querySelectorAll('.section');
 let sectionOffsets = [];
 
 const updateSectionOffsets = () => {
-    const buffer = 100; // Adjust this value as needed
+    const buffer = 300; // Adjust this value as needed
     sectionOffsets = Array.from(sections).map(section => {
         const style = window.getComputedStyle(section);
         const marginTop = parseInt(style.marginTop, 10) || 0;

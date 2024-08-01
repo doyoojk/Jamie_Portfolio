@@ -151,6 +151,10 @@ body {
     height: auto;
 }
 
+#experience {
+    margin-bottom: -10%;
+}
+
 .experience-container {
     margin-top: 6%;
     display: flex;
@@ -159,6 +163,7 @@ body {
 }
 
 .experience-panel {
+    scale: 0.9;
     opacity: 80%;
     display: flex;
     background-color: #31384E;
@@ -180,6 +185,16 @@ body {
     border-left: rgb(0, 255, 255) 1px solid;
 }
 
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    outline: none;
+}
+
 .tab-button {
     height: 15%;
     font-family: 'Pixelify Sans', sans-serif;
@@ -190,7 +205,6 @@ body {
     border-bottom: rgb(0, 255, 255) 1px solid;
     text-align: left;
     background: none;
-    outline: none;
     cursor: pointer;
     transition: background-color 0.3s;
 }
