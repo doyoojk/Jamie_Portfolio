@@ -181,16 +181,16 @@ body {
 
 .ghost-area {
     position: absolute;
-    width: 36px;
-    height: 36px;
-    background-color: rgba(255, 255, 255, 0.1);
+    width: 30px; /* Match ghostSize */
+    height: 30px; /* Match ghostSize */
     border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
     transition: all 0.3s;
     cursor: pointer;
 }
 
 .ghost-area:hover {
-    background-color: rgba(255, 0, 0, 0.7); /* Red ghost */
+    background-color: rgba(255, 0, 0, 0.7); /* Default red ghost */
     box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
 }
 

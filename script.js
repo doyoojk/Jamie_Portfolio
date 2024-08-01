@@ -62,7 +62,7 @@ document.addEventListener('mousemove', (e) => {
 
 function createMazePaths() {
     const mazeBackground = document.getElementById('maze-background');
-    const cellSize = 40;
+    const cellSize = 80;
     const rows = Math.ceil(window.innerHeight / cellSize);
     const cols = Math.ceil(window.innerWidth / cellSize);
     
@@ -75,8 +75,9 @@ function createMazePaths() {
     // Randomly block some paths
     for (let row = 0; row < rows; row++) {
         for (let col = 0; col < cols; col++) {
-            if (Math.random() < 0.4 && // 40% chance to block a cell
-                !(row === 1 && col === 1)) { // Keep the top-left corner open
+            if (Math.random() < 0.35 && // 40% chance to block a cell
+                !(row === 1 && col === 1) && // Keep the top-left corner open
+                !(row % 2 === 1 && col % 2 === 1)) { // Keep intersections open for ghosts
                 grid[row][col] = 0;
                 
                 // Block adjacent cells to create larger walls
@@ -147,7 +148,8 @@ function createMazePaths() {
 function createGhostAreas(grid) {
     const ghostCount = 4;
     const main = document.querySelector('main');
-    const cellSize = 40;
+    const cellSize = 80;  // Match this with your cell size in the maze
+    const ghostSize = 30; // Ensure ghostSize < cellSize to fit nicely
     
     for (let i = 0; i < ghostCount; i++) {
         const ghost = document.createElement('div');
@@ -159,10 +161,16 @@ function createGhostAreas(grid) {
         do {
             x = Math.floor(Math.random() * grid[0].length);
             y = Math.floor(Math.random() * grid.length);
-        } while (!grid[y][x]);
+        } while (!grid[y][x]);  // Ensure it's an open cell (not blocked)
         
-        ghost.style.left = `${x * cellSize}px`;
-        ghost.style.top = `${y * cellSize}px`;
+        // Calculate the centered position within the cell
+        const centerX = x * cellSize + (cellSize - ghostSize) / 2;
+        const centerY = y * cellSize + (cellSize - ghostSize) / 2;
+        
+        ghost.style.left = `${centerX}px`;
+        ghost.style.top = `${centerY}px`;
+        ghost.style.width = `${ghostSize}px`;
+        ghost.style.height = `${ghostSize}px`;
     }
 }
 
