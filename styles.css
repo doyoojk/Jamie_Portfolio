@@ -192,22 +192,22 @@ body {
     transition: opacity 0.4s ease-in-out; /* Adjust duration and easing as needed */
 }
 
-.ghost-area:hover {
+.ghost-red:hover {
     background-color: rgba(255, 0, 0, 0.7); /* Default red ghost */
     box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
 }
 
-.ghost-area:nth-child(2):hover {
+.ghost-pink:hover {
     background-color: rgba(255, 184, 255, 0.7); /* Pink ghost */
     box-shadow: 0 0 15px rgba(255, 184, 255, 0.7);
 }
 
-.ghost-area:nth-child(3):hover {
+.ghost-cyan:hover {
     background-color: rgba(0, 255, 255, 0.7); /* Cyan ghost */
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
 }
 
-.ghost-area:nth-child(4):hover {
+.ghost-orange:hover {
     background-color: rgba(255, 184, 82, 0.7); /* Orange ghost */
     box-shadow: 0 0 15px rgba(255, 184, 82, 0.7);
 }

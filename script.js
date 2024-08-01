@@ -211,10 +211,11 @@ function createGhostAreas(grid) {
     const main = document.querySelector('main');
     const cellSize = 80;  // Match this with your cell size in the maze
     const ghostSize = 45; // Ensure ghostSize < cellSize to fit nicely
-    
+    const ghostClasses = ['ghost-red', 'ghost-pink', 'ghost-cyan', 'ghost-orange'];
+
     for (let i = 0; i < ghostCount; i++) {
         const ghost = document.createElement('div');
-        ghost.className = 'ghost-area';
+        ghost.className = `ghost-area ${ghostClasses[i]}`; // Assign a unique class
         main.appendChild(ghost);
         
         // Find an open cell to place the ghost
@@ -234,6 +235,7 @@ function createGhostAreas(grid) {
         ghost.style.height = `${ghostSize}px`;
     }
 }
+
 
 window.addEventListener('load', () => {
     updateSectionOffsets(); // Initial calculation of section offsets
