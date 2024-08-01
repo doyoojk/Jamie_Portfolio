@@ -16,7 +16,6 @@ header {
     width: 100%;
     /* background: rgba(0, 0, 0, 0.9); */
     transition: background 0.3s;
-    z-index: 1000;
     display: flex;
     justify-content: flex-end;
 }
@@ -184,7 +183,7 @@ body {
     width: 45px; /* Match ghostSize */
     height: 45px; /* Match ghostSize */
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0)); /* Transparent gradient white circle */
     transition: all 0.3s;
     cursor: pointer;
 }
@@ -195,20 +194,20 @@ body {
 
 .ghost-area:hover {
     background-color: rgba(255, 0, 0, 0.7); /* Default red ghost */
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
 }
 
 .ghost-area:nth-child(2):hover {
     background-color: rgba(255, 184, 255, 0.7); /* Pink ghost */
-    box-shadow: 0 0 10px rgba(255, 184, 255, 0.7);
+    box-shadow: 0 0 15px rgba(255, 184, 255, 0.7);
 }
 
 .ghost-area:nth-child(3):hover {
     background-color: rgba(0, 255, 255, 0.7); /* Cyan ghost */
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
 }
 
 .ghost-area:nth-child(4):hover {
     background-color: rgba(255, 184, 82, 0.7); /* Orange ghost */
-    box-shadow: 0 0 10px rgba(255, 184, 82, 0.7);
+    box-shadow: 0 0 15px rgba(255, 184, 82, 0.7);
 }
