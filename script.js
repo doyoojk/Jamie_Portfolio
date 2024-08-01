@@ -19,11 +19,33 @@ const fadeInCursorEffect = () => {
     cursorEffect.style.opacity = 1; // Fade in
 };
 
-// Function to regenerate ghosts
+// Function to fade out the existing maze and ghosts
+const fadeOutMazeAndGhosts = (callback) => {
+    const mazePaths = document.querySelectorAll('.maze-path');
+    const ghosts = document.querySelectorAll('.ghost-area');
+    
+    mazePaths.forEach(path => path.style.opacity = 0);
+    ghosts.forEach(ghost => ghost.style.opacity = 0);
+    
+    // Wait for the fade-out transition to complete before executing the callback
+    setTimeout(callback, 500); // Duration matches CSS transition duration
+};
+
+// Function to regenerate ghosts with a fade-in effect
 const regenerateGhosts = () => {
-    document.querySelectorAll('.ghost-area').forEach(ghost => ghost.remove());
-    const grid = createMazePaths(); // Optionally recreate maze paths as well
-    createGhostAreas(grid);
+    fadeOutMazeAndGhosts(() => {
+        document.querySelectorAll('.ghost-area').forEach(ghost => ghost.remove());
+        const grid = createMazePaths(); // Optionally recreate maze paths as well
+        createGhostAreas(grid);
+
+        // Ensure the CSS handles the initial opacity for fade-in
+        const mazePaths = document.querySelectorAll('.maze-path');
+        const ghosts = document.querySelectorAll('.ghost-area');
+        
+        // Fade in using CSS transition
+        mazePaths.forEach(path => path.style.opacity = '0.6');
+        ghosts.forEach(ghost => ghost.style.opacity = '');
+    });
 };
 
 // Initialize sections' top offsets
@@ -65,13 +87,13 @@ window.addEventListener('scroll', () => {
 
     header.style.backgroundColor = newColorHex;
 
-    // Check if the scroll position is below the top of the skills section
-    const homeSectionBottom = homeSection.offsetHeight + parseInt(window.getComputedStyle(homeSection).marginBottom, 10);
-    if (scrollY >= homeSectionBottom) {
-        fadeOutCursorEffect();
-    } else {
-        fadeInCursorEffect();
-    }
+    // // Check if the scroll position is below the top of the skills section
+    // const homeSectionBottom = homeSection.offsetHeight + parseInt(window.getComputedStyle(homeSection).marginBottom, 10);
+    // if (scrollY >= homeSectionBottom) {
+    //     fadeOutCursorEffect();
+    // } else {
+    //     fadeInCursorEffect();
+    // }
 
     // Update cursor effect position on scroll
     updateCursorEffectPosition();
