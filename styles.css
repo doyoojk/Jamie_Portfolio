@@ -123,11 +123,12 @@ body {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    background: radial-gradient(circle, #f1c40f51 0%, rgba(255,189,51,0) 50%);
+    background: radial-gradient(circle, #f1c40f51 6%, rgba(255,189,51,0) 60%);
     pointer-events: none;
     transform: translate(-50%, -50%);
     z-index: 9999;
-    transition: left 0s, top 0s;
+    transition: opacity 1s ease-in-out, left 0s, top 0s;
+    opacity: 1;
 }
 
 .skills-container {
@@ -149,4 +150,61 @@ body {
 .skills-image img{
     width: 100%;
     height: auto;
+}
+
+#maze-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.maze-path {
+    position: absolute;
+    background-color: #2121de;
+    opacity: 0.6;
+}
+
+.maze-dot {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    opacity: 0.7;
+}
+
+.ghost-area {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.ghost-area:hover {
+    background-color: rgba(255, 0, 0, 0.7); /* Red ghost */
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+}
+
+.ghost-area:nth-child(2):hover {
+    background-color: rgba(255, 184, 255, 0.7); /* Pink ghost */
+    box-shadow: 0 0 10px rgba(255, 184, 255, 0.7);
+}
+
+.ghost-area:nth-child(3):hover {
+    background-color: rgba(0, 255, 255, 0.7); /* Cyan ghost */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+}
+
+.ghost-area:nth-child(4):hover {
+    background-color: rgba(255, 184, 82, 0.7); /* Orange ghost */
+    box-shadow: 0 0 10px rgba(255, 184, 82, 0.7);
 }
