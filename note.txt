@@ -1,4 +1,0 @@
-
-- move the pacman related stuff to one file
-- start adding experience
-- add github projects using api
