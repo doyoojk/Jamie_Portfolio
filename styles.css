@@ -2,7 +2,6 @@ body {
     font-family: 'Quicksand', sans-serif;
     font-weight: 300;
     background: linear-gradient(180deg, #19141F, #4D637C);
-    /* background: linear-gradient(180deg, #19141F,#60c4ff ); */
     color: #fff;
     margin: 0;
     padding: 0;
@@ -14,7 +13,6 @@ header {
     top: 0;
     height: 5%;
     width: 100%;
-    /* background: rgba(0, 0, 0, 0.9); */
     transition: background 0.3s;
     display: flex;
     justify-content: flex-end;
@@ -40,7 +38,7 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-    color:#33ffbd;
+    color: #33ffbd;
 }
 
 .section h1, .section h2 {
@@ -77,7 +75,7 @@ header nav ul li a:hover {
     margin-bottom: -20%;
 }
 
-#skills{
+#skills {
     margin-bottom: -10%;
 }
 
@@ -107,7 +105,6 @@ form button:hover {
     background-color: #f1c40f;
 }
 
-/* Ensure sections are scrollable */
 html {
     scroll-behavior: smooth;
 }
@@ -116,13 +113,12 @@ body {
     scroll-snap-type: y mandatory;
 }
 
-/* Cursor effect styles */
 #cursor-effect {
     position: absolute;
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    background: radial-gradient(circle, #f1c40f51 6%, rgba(255,189,51,0) 60%);
+    background: radial-gradient(circle, #f1c40f51 6%, rgba(255, 189, 51, 0) 60%);
     pointer-events: none;
     transform: translate(-50%, -50%);
     z-index: 9999;
@@ -146,7 +142,7 @@ body {
     align-items: center;
 }
 
-.skills-image img{
+.skills-image img {
     width: 100%;
     height: auto;
 }
@@ -168,9 +164,9 @@ body {
     display: flex;
     background-color: #31384E;
     color: white;
-    height: 800px; /* Adjust height as needed */
-    width: 70%; /* Adjust width as needed */
-    margin: auto; /* Center the panel */
+    height: 800px;
+    width: 70%;
+    margin: auto;
     border-top: rgb(0, 255, 255) 1px solid;
     border-right: rgb(0, 255, 255) 1px solid;
     border-bottom: rgb(0, 255, 255) 1px solid;
@@ -179,7 +175,7 @@ body {
 
 .tabs {
     background-color: #211d30;
-    width: 25%; /* Adjust width of tabs */
+    width: 25%;
     display: flex;
     flex-direction: column;
     border-right: rgb(0, 255, 255) 1px solid;
@@ -223,7 +219,7 @@ button {
 .tab-content {
     display: none;
     padding: 20px;
-    width: 75%; /* Adjust content area */
+    width: 75%;
 }
 
 .tab-button img {

@@ -1,0 +1,123 @@
+/* Responsive styles */
+/* Remove borders from experience section */
+@media screen and (max-width: 2500px) {
+    .tab-button {
+        font-size: 1.8rem;
+    }
+
+    .header-text {
+        font-size: 1.5rem;
+        border-bottom: none;
+    }
+    .date-text {
+        font-size: 1.3rem;
+        border-bottom: none;
+    }
+
+    .content-description {
+        font-size: 2rem;
+    }
+}
+
+
+@media screen and (max-width: 1440px) {
+    .tab-button {
+        font-size: 1.2rem;
+    }
+
+    .header-text {
+        font-size: 1.2rem;
+        border-bottom: none;
+    }
+    .date-text {
+        font-size: 1rem;
+        border-bottom: none;
+    }
+
+    .content-description {
+        font-size: 1.3rem;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    header {
+        background-color: transparent;
+        height: auto;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        align-items: center;
+    }
+
+    header nav ul li {
+        margin: 0.5rem 0;
+        padding-right: 20px;
+        width: 100%;
+        text-align: right;
+    }
+    .section {
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .tab-button {
+        font-size: 1rem;
+    }
+
+    .experience-panel {
+        width: 80%;
+    }
+
+    .header-text {
+        font-size: 2rem;
+        border-bottom: none;
+    }
+    .date-text {
+        font-size: 1rem;
+        border-bottom: none;
+    }
+
+    .content-description {
+        font-size: 1.3rem;
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+    header nav ul li {
+        font-size: 3px;
+    }
+    .experience-container {
+        width: 100%;
+    }
+    .tabs {
+        padding-right: 30%;
+    }
+
+    .tab-content {
+        width: 100%;
+    }
+    .tab-button {
+        font-size: 0.2rem;
+        margin-right: 100px;
+    }
+
+    .experience-panel {
+        width: 80%;
+    }
+
+    .header-text {
+        font-size: 2rem;
+        border-bottom: none;
+    }
+    .date-text {
+        font-size: 1rem;
+        border-bottom: none;
+    }
+
+    .content-description {
+        font-size: 1.3rem;
+    }
+}

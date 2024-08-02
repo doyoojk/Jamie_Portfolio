@@ -45,21 +45,30 @@ let currentSectionIndex = 0;
 // Scroll event listener
 window.addEventListener('scroll', () => {
     const header = document.getElementById('header');
+    const navList = header.querySelector('nav ul');
     const scrollY = window.scrollY;
     const documentHeight = document.body.scrollHeight - window.innerHeight;
     const ratio = scrollY / documentHeight;
 
-    // Calculate intermediate color between #19141F and #4D637C
-    const startColor = { r: 25, g: 20, b: 31 };
-    const endColor = { r: 77, g: 99, b: 124 };
-    const newColor = {
-        r: Math.round(startColor.r + (endColor.r - startColor.r) * ratio),
-        g: Math.round(startColor.g + (endColor.g - startColor.g) * ratio),
-        b: Math.round(startColor.b + (endColor.b - startColor.b) * ratio),
-    };
-    const newColorHex = `rgb(${newColor.r}, ${newColor.g}, ${newColor.b})`;
+    // Check if nav ul layout is column
+    const navListStyle = window.getComputedStyle(navList);
+    const isColumnLayout = navListStyle.flexDirection === 'column';
 
-    header.style.backgroundColor = newColorHex;
+    if (!isColumnLayout) {
+        // Calculate intermediate color between #19141F and #4D637C
+        const startColor = { r: 25, g: 20, b: 31 };
+        const endColor = { r: 77, g: 99, b: 124 };
+        const newColor = {
+            r: Math.round(startColor.r + (endColor.r - startColor.r) * ratio),
+            g: Math.round(startColor.g + (endColor.g - startColor.g) * ratio),
+            b: Math.round(startColor.b + (endColor.b - startColor.b) * ratio),
+        };
+        const newColorHex = `rgb(${newColor.r}, ${newColor.g}, ${newColor.b})`;
+
+        header.style.backgroundColor = newColorHex;
+    } else {
+        header.style.backgroundColor = 'transparent'; // Ensure transparency if in column layout
+    }
 
     // Update cursor effect position on scroll
     updateCursorEffectPosition();
@@ -75,6 +84,8 @@ window.addEventListener('scroll', () => {
         }
     }
 });
+
+
 
 // Mousemove event listener
 document.addEventListener('mousemove', (e) => {
