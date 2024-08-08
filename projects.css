@@ -1,6 +1,7 @@
 #projects {
     text-align: center; /* Center the header text */
     padding: 7%; /* Padding around the section for better spacing */
+    margin-bottom: -10%;
 }
 
 #projects h2 {

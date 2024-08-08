@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const apiUrl = ``;
-    const myToken = '';
+    const ignoreRepos = ['doyoojk','iCounsel'];
 
     console.log("Fetching repositories...");
 
@@ -24,6 +23,9 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       console.log(`Fetched ${repos.length} repositories.`);
       repos.forEach(repo => {
+        if (ignoreRepos.includes(repo.name)) {
+            return;
+        }
         console.log(`Fetching README for repo: ${repo.name}`);
         fetch(repo.contents_url.replace('{+path}', 'README.md'), {
             method: 'GET',
@@ -39,10 +41,10 @@ document.addEventListener('DOMContentLoaded', function() {
             return response.text();
         })
         .then(readmeContent => {
-          const gifUrl = extractGifUrl(readmeContent);
-          if (gifUrl) {
-            console.log(`Found GIF URL in ${repo.name}: ${gifUrl}`);
-            const rawUrl = gifUrl.replace('https://github.com', 'https://raw.githubusercontent.com').replace('/blob', '');
+          const imageUrls = extractImageUrl(readmeContent);
+          if (imageUrls.length > 0) {
+            const firstImageUrl = imageUrls[0];
+            const rawUrl = firstImageUrl.replace('https://github.com', 'https://raw.githubusercontent.com').replace('/blob', '').replace("master", "main");
             displayRepository(repo, rawUrl);
           } else {
             console.log(`No GIF found in ${repo.name}`);
@@ -54,15 +56,26 @@ document.addEventListener('DOMContentLoaded', function() {
     .catch(error => console.error('Error fetching repositories:', error));
 });
 
-function extractGifUrl(markdownContent) {
-    // This matches Markdown image syntax and HTML <img> tags with .gif
-    const gifRegex = /!\[[^\]]*\]\((.*?.gif)\)|<img[^>]+src=["']([^"']*.gif)["']/g;
+// function extractGifUrl(markdownContent) {
+//     // This matches Markdown image syntax and HTML <img> tags with .gif
+//     const gifRegex = /!\[[^\]]*\]\((.*?.gif)\)|<img[^>]+src=["']([^"']*.gif)["']/g;
+//     let matches, urls = [];
+//     while ((matches = gifRegex.exec(markdownContent)) !== null) {
+//         // This will push the first captured group (Markdown) or second captured group (HTML) if it exists
+//         urls.push(matches[1] || matches[2]);
+//     }
+//     return urls.length > 0 ? urls[0] : null; // Return the first found URL, or null if none found
+// }
+
+function extractImageUrl(markdownContent) {
+    // This regex matches Markdown image syntax and HTML <img> tags with common image file extensions
+    const imageRegex = /!\[[^\]]*\]\((.*?\.(gif|jpg|jpeg|png|bmp))\)|<img[^>]+src=["']([^"']+?\.(gif|jpg|jpeg|png|bmp))["']/gi;
     let matches, urls = [];
-    while ((matches = gifRegex.exec(markdownContent)) !== null) {
-        // This will push the first captured group (Markdown) or second captured group (HTML) if it exists
-        urls.push(matches[1] || matches[2]);
+    while ((matches = imageRegex.exec(markdownContent)) !== null) {
+        // This will push the first captured group (Markdown) or third captured group (HTML) if it exists
+        urls.push(matches[1] || matches[3]);
     }
-    return urls.length > 0 ? urls[0] : null; // Return the first found URL, or null if none found
+    return urls; // Return all found URLs
 }
 
 function displayRepository(repo, gifPath) {

@@ -80,26 +80,57 @@ header nav ul li a:hover {
     margin-bottom: -10%;
 }
 
-.skills-container, .experience-container, .projects-container {
+.skills-container, .experience-container, .projects-container, .contact-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
+.contact-container {
+    width: 50%;
+}
+
+#contact {
+    display: flex;  /* Enables flexbox layout */
+    flex-direction: column;  /* Stacks flex items vertically */
+    align-items: center;  /* Centers the flex items horizontally */
+    justify-content: center;  /* Centers the flex items vertically */
+    min-height: 100vh;  /* Optional: Makes the section at least the height of the viewport */
+    padding: 50px 0;  /* Adds padding to the top and bottom of the section */
+}
+
+form {
+    margin-top: 10%;
+    width: 100%;  /* Sets the width of the form */
+    max-width: 100%;  /* Ensures the form does not get too wide on larger screens */
+    display: flex;
+    flex-direction: column;  /* Stacks input fields and button vertically */
+    align-items: center;  /* Centers the form's children */
+}
+
 form input, form textarea, form button {
-    display: block;
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px;
+    font-size: 1rem;
+    font-family: "Quicksand", sans-serif;
+    border-radius: 20px;
     border: none;
-    border-radius: 5px;
+    box-shadow: none;
+    width: 100%;  /* Makes sure each form element fills the form */
+    margin: 10px 0;  /* Adds vertical space between form elements */
+    padding: 15px;  /* Increases padding for better touch targets and readability */
+}
+
+form textarea {
+    resize: vertical; /* Allows only vertical resizing */
 }
 
 form button {
+    width: 30%;
     background-color: #f4d03f;
     color: #000;
-    font-size: 1rem;
+    font-size: 1.3rem;
+    border: none;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 form button:hover {
