@@ -1,3 +1,2 @@
-- smoother transition
-- start adding experience
 - add github projects using api
+- fix responsiveness of the overall website

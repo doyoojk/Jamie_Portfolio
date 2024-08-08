@@ -1,0 +1,50 @@
+#projects {
+    text-align: center; /* Center the header text */
+    padding: 7%; /* Padding around the section for better spacing */
+}
+
+#projects h2 {
+    margin-bottom: 10%; /* Space below the header */
+}
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns of equal width */
+    gap: 0px; /* Space between grid items */
+    padding: 0px; /* Padding around the grid container */
+}
+
+.project {
+    font-size: 2rem;
+    font-family: "Pixelify Sans", sans-serif;
+    color: rgb(0, 255, 255);
+    text-align: center;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    margin-bottom: 20%;
+}
+
+.project img {
+    width: 80%; /* Ensures the image takes up the full width of its container */
+    height: auto; /* Ensures the height matches the width to maintain aspect ratio */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    aspect-ratio: 1 / 1; /* Keeps the width and height the same, creating a square */
+    border: 1px rgb(0, 255, 255) solid; /* Adds a border around the image */
+    border-radius: 20px;
+}
+.project a {
+    font-size: 1.4rem;
+    font-family: "QuickSand", sans-serif;
+    color: #ffffff;
+    /* color: #ffbd33; */
+    text-decoration: none;
+    font-weight: bold;
+    display: block; /* Ensures the link is on a new line */
+    margin-top: 10px;
+}
+
+.project a:hover {
+    /* color: #d3891b; */
+    color: #ffbd33;
+}
