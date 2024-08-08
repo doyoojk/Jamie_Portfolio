@@ -16,6 +16,7 @@ header {
     transition: background 0.3s;
     display: flex;
     justify-content: flex-end;
+    z-index: 1000;
 }
 
 header nav ul {
@@ -159,7 +160,7 @@ body {
 }
 
 .experience-panel {
-    scale: 0.9;
+    scale: 0.8;
     opacity: 80%;
     display: flex;
     background-color: #31384E;
