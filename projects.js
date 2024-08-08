@@ -44,7 +44,8 @@ document.addEventListener('DOMContentLoaded', function() {
           const imageUrls = extractImageUrl(readmeContent);
           if (imageUrls.length > 0) {
             const firstImageUrl = imageUrls[0];
-            const rawUrl = firstImageUrl.replace('https://github.com', 'https://raw.githubusercontent.com').replace('/blob', '').replace("master", "main");
+            const rawUrl = firstImageUrl.replace('https://github.com', 'https://raw.githubusercontent.com').replace('/blob', '');
+            console.log(rawUrl);
             displayRepository(repo, rawUrl);
           } else {
             console.log(`No GIF found in ${repo.name}`);
@@ -55,17 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     .catch(error => console.error('Error fetching repositories:', error));
 });
-
-// function extractGifUrl(markdownContent) {
-//     // This matches Markdown image syntax and HTML <img> tags with .gif
-//     const gifRegex = /!\[[^\]]*\]\((.*?.gif)\)|<img[^>]+src=["']([^"']*.gif)["']/g;
-//     let matches, urls = [];
-//     while ((matches = gifRegex.exec(markdownContent)) !== null) {
-//         // This will push the first captured group (Markdown) or second captured group (HTML) if it exists
-//         urls.push(matches[1] || matches[2]);
-//     }
-//     return urls.length > 0 ? urls[0] : null; // Return the first found URL, or null if none found
-// }
 
 function extractImageUrl(markdownContent) {
     // This regex matches Markdown image syntax and HTML <img> tags with common image file extensions
