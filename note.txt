@@ -1,3 +1,0 @@
-- add github projects using api
-- fix responsiveness of the overall website
-- figure out how to push without security issues
