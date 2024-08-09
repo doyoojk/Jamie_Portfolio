@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(repo.contents_url.replace('{+path}', 'README.md'), {
             method: 'GET',
             headers: {
-                'Authorization': `token ${myToken}`,
+                'Authorization': `token ${MY_TOKEN}`,
                 'Accept': 'application/vnd.github.v3.raw'
             }
         })
