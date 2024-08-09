@@ -43,6 +43,8 @@ jobs:
         env: 
           API_URL:  ${{secrets.API_URL}}
           MY_TOKEN: ${{secrets.MY_TOKEN}}
+        run: 
+          echo "Found $API_URL"
             
       - name: Deploy to GitHub Pages
         id: deployment
