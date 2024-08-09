@@ -39,8 +39,7 @@ jobs:
           # Upload entire repository
           path: '.'
           
-      - name: Run Script
-        run: node projects.js
+      - name: Env Vars
         env: 
           API_URL:  ${{secrets.API_URL}}
           MY_TOKEN: ${{secrets.MY_TOKEN}}
