@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Add the icon and text to the button
                 const icon = document.createElement('img');
-                icon.src = '/data/folder.svg'; // Path to the icon
+                icon.src = './data/folder.svg'; // Path to the icon
                 icon.alt = 'Folder Icon';
 
                 // Append the icon and text to the button
