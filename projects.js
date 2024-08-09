@@ -3,10 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     console.log("Fetching repositories...");
 
-    fetch(apiUrl, {
+    fetch(API_URL, {
         method: 'GET', 
         headers: {
-            'Authorization': `token ${myToken}`
+            'Authorization': `token ${MY_TOKEN}`
         }
     })
     .then(response => {
