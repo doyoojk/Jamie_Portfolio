@@ -38,6 +38,13 @@ jobs:
         with:
           # Upload entire repository
           path: '.'
+          
+      - name: Run Script
+        run: node projects.js
+        env: 
+          API_URL:  ${{secrets.API_URL}}
+          MY_TOKEN: ${{secrets.MY_TOKEN}}
+            
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
