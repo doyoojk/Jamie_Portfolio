@@ -40,6 +40,11 @@ jobs:
         with:
           # Upload entire repository
           path: '.'
+          
+      - name: Use Secret
+        run: |
+          echo "Using API URL ${{ secrets.API_URL }}"
+          echo "Using Token ${{ secrets.API_TOKEN }}"
         
       - name: Replace environment variables
         run: |
