@@ -46,16 +46,10 @@ jobs:
           echo "Length of secret: ${#MY_TOKEN}"
         env:
           MY_TOKEN: ${{ secrets.MY_TOKEN }}
-      
-      - name: Run script
-        env:
-          TOKEN: ${{ secrets.MY_TOKEN }}
-        run: |
-          node ./projects.js
 
-      # - name: Replace environment variables
-      #   run: |
-      #     sed -i "s|__MY_TOKEN__|${{ secrets.MY_TOKEN }}|g" ./projects.js
+      - name: Replace environment variables
+        run: |
+          sed -i "s|__MY_TOKEN__|${{ secrets.MY_TOKEN }}|g" ./projects.js
 
       - name: Debug after replacement
         run: |

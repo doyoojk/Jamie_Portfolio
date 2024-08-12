@@ -1,12 +1,6 @@
-import { Octokit } from "octokit";
-
-const myToken = new Octokit({ 
-  auth: process.env.MY_TOKEN,
-});
-
 document.addEventListener('DOMContentLoaded', function() {
     const apiUrl = 'https://api.github.com/users/doyoojk/repos';
-    // const myToken = '__MY_TOKEN__';
+    const myToken = '__MY_TOKEN__';
     const ignoreRepos = ['doyoojk','iCounsel'];
 
     console.log("Fetching repositories...");
