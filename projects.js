@@ -1,4 +1,4 @@
-const apiUrl = '__API_URL__';
+const apiUrl = 'https://api.github.com/users/doyoojk/repos';
 const myToken = '__MY_TOKEN__';
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     console.log("Fetching repositories...");
 
-    fetch('__API_URL__', {
+    fetch(apiUrl, {
         method: 'GET', 
         headers: {
-            'Authorization': 'token __MY_TOKEN__'
+            'Authorization': `token ${myToken}`
         }
     })
     .then(response => {
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(repo.contents_url.replace('{+path}', 'README.md'), {
             method: 'GET',
             headers: {
-                'Authorization': `token __MY_TOKEN__`,
+                'Authorization': `token ${myToken}`,
                 'Accept': 'application/vnd.github.v3.raw'
             }
         })
