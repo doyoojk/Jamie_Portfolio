@@ -50,7 +50,7 @@ jobs:
           sed -i 's|__MY_TOKEN__|'$MY_TOKEN'|g' projects.js
 
       - name: Debug after replacement
-        run: cat path/to/your/script.js
+        run: cat projects.js
             
       - name: Deploy to GitHub Pages
         id: deployment
