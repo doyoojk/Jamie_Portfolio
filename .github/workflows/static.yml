@@ -45,13 +45,15 @@ jobs:
         
       - name: Replace environment variables
         run: |
-          sed -i "s|__API_URL__|${{ secrets.API_URL }}|g" ./projects.js
-          sed -i "s|__MY_TOKEN__|${{ secrets.MY_TOKEN }}|g" ./projects.js
+          sed -i "s|__API_URL__|${{ secrets.API_URL }}|g" .\projects.js
+          sed -i "s|__MY_TOKEN__|${{ secrets.MY_TOKEN }}|g" .\projects.js
 
       - name: Debug after replacement
         run: |
           echo "Displaying the contents of the script to verify replacement"
-          cat ./projects.js
+          cat .\projects.js
+          grep -C 2 '__API_URL__' .\projects.js || echo "API_URL replacement successful"
+          grep -C 2 '__MY_TOKEN__' .\projects.js || echo "MY_TOKEN replacement successful"  
             
       - name: Deploy to GitHub Pages
         id: deployment
