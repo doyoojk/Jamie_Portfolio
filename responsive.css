@@ -1,12 +1,26 @@
 /* Responsive styles */
 /* Remove borders from experience section */
 @media screen and (max-width: 2500px) {
+    .section {
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .tab-button img {
+        padding-left: 10px;
+        height: 40px;
+        vertical-align: middle;
+        padding-right: 5%;
+    }
+
     .tab-button {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+        padding: 5%;
     }
 
     .header-text {
-        font-size: 1.5rem;
+        font-size: 2rem;
         border-bottom: none;
     }
     .date-text {
@@ -15,27 +29,32 @@
     }
 
     .content-description {
-        font-size: 2rem;
+        font-size: 1.6rem;
     }
 }
 
 
 @media screen and (max-width: 1440px) {
     .tab-button {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
+        padding: 10%;
+    }
+
+    .tab-button img {
+        display: none;
     }
 
     .header-text {
-        font-size: 1.2rem;
+        font-size: 2rem;
         border-bottom: none;
     }
     .date-text {
-        font-size: 1rem;
+        font-size: 1.5rem;
         border-bottom: none;
     }
 
     .content-description {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
     }
 }
 
@@ -57,13 +76,9 @@
         width: 100%;
         text-align: right;
     }
-    .section {
-        padding: 0;
-        margin-left: 0;
-        margin-right: 0;
-    }
+
     .tab-button {
-        font-size: 1rem;
+        font-size: 1.3rem;
     }
 
     .experience-panel {
@@ -71,53 +86,90 @@
     }
 
     .header-text {
-        font-size: 2rem;
+        font-size: 1.6rem;
         border-bottom: none;
     }
     .date-text {
-        font-size: 1rem;
+        font-size: 1.2rem;
         border-bottom: none;
     }
 
     .content-description {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
 }
 
 
 @media screen and (max-width: 500px) {
-    header nav ul li {
-        font-size: 3px;
+    body {
+        font-size: 0.8rem;
     }
+    .section h1, .section h2 {
+        font-size:2rem;
+    }
+
+    .header-highlight {
+        color: #ffffff;
+        font-size: 1.3rem;
+    }
+
+    #home {
+        margin-bottom: -90%;
+    }
+    
+    .skills-image img {
+        scale:0.7;
+        width: 100%;
+        height: auto;
+    }
+
+    #skills {
+        margin-bottom: -170%;
+    }
+    
+    
+    header nav ul li a{
+        font-size: 1rem;
+    }
+
+    header nav ul li{
+        margin: 0;
+    }
+
+    .experience-panel {
+        height: auto;
+    }
+
     .experience-container {
         width: 100%;
     }
     .tabs {
-        padding-right: 30%;
+        width: 35%;
     }
 
     .tab-content {
-        width: 100%;
+
     }
     .tab-button {
-        font-size: 0.2rem;
-        margin-right: 100px;
+        height: 15%;
+        font-size: 0.9rem;
     }
 
     .experience-panel {
+        scale:100%;
         width: 80%;
     }
 
     .header-text {
-        font-size: 2rem;
+        font-size: 1rem;
         border-bottom: none;
     }
     .date-text {
-        font-size: 1rem;
+        font-size: 0.7rem;
         border-bottom: none;
     }
 
     .content-description {
-        font-size: 1.3rem;
+        font-size: 0.8rem;
     }
 }
