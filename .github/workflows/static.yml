@@ -50,7 +50,9 @@ jobs:
           sed -i 's|__MY_TOKEN__|'$MY_TOKEN'|g' projects.js
 
       - name: Debug after replacement
-        run: cat projects.js
+        run: |
+          echo "After replacement"
+          grep -o '__API_URL__\|__MY_TOKEN__' projects.js || echo "Replacement successful"
             
       - name: Deploy to GitHub Pages
         id: deployment
