@@ -46,8 +46,8 @@ jobs:
           API_URL:  ${{secrets.API_URL}}
           MY_TOKEN: ${{secrets.MY_TOKEN}}
         run: |
-          sed -i 's|__API_URL__|'$API_URL'|g' .\projects.js
-          sed -i 's|__MY_TOKEN__|'$MY_TOKEN'|g' .\projects.js
+          sed -i 's|__API_URL__|'$API_URL'|g' projects.js
+          sed -i 's|__MY_TOKEN__|'$MY_TOKEN'|g' projects.js
             
       - name: Deploy to GitHub Pages
         id: deployment
