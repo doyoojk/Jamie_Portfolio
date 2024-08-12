@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const ignoreRepos = ['doyoojk','iCounsel'];
 
     console.log("Fetching repositories...");
-    console.log("API URL: " + apiUrl);
+    console.log("Using token:", myToken);
 
     fetch(apiUrl, {
         method: 'GET', 
