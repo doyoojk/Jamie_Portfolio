@@ -40,11 +40,20 @@ jobs:
         with:
           # Upload entire repository
           path: '.'
+
+      - name: Check Secret Length
+        run: |
+          echo "Length of secret: ${#API_URL}"
+          echo "Length of secret: ${#MY_TOKEN}"
+        env:
+          API_URL: ${{ secrets.API_URL }}
+          MY_TOKEN: ${{ secrets.MY_TOKEN }}
+
         
       - name: Replace environment variables
         run: |
-          sed -i "s|__API_URL__|replace test|g" ./projects.js
-          sed -i "s|__MY_TOKEN__|replace test|g" ./projects.js
+          sed -i "s|__API_URL__|${{ secrets.API_URL }}|g" ./projects.js
+          sed -i "s|__MY_TOKEN__|${{ secrets.MY_TOKEN }}|g" ./projects.js
 
       - name: Debug after replacement
         run: |
