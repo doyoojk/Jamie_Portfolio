@@ -45,7 +45,7 @@ jobs:
         env: 
           API_URL:  ${{secrets.API_URL}}
           MY_TOKEN: ${{secrets.MY_TOKEN}}
-        run: 
+        run: |
           sed -i 's|__API_URL__|'$API_URL'|g' .\projects.js
           sed -i 's|__MY_TOKEN__|'$MY_TOKEN'|g' .\projects.js
             
