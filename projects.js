@@ -1,15 +1,16 @@
-const apiUrl = 'https://api.github.com/users/doyoojk/repos';
-const myToken = '__MY_TOKEN__';
 document.addEventListener('DOMContentLoaded', function() {
-
+    const apiUrl = 'https://api.github.com/users/doyoojk/repos';
+    const myToken = '__MY_TOKEN__';
     const ignoreRepos = ['doyoojk','iCounsel'];
 
     console.log("Fetching repositories...");
+    console.log("API URL: " + apiUrl);
 
     fetch(apiUrl, {
         method: 'GET', 
         headers: {
-            'Authorization': `token ${myToken}`
+            'Authorization': `token ${myToken}`, 
+            'Accept': 'application/vnd.github.v3+json'
         }
     })
     .then(response => {
