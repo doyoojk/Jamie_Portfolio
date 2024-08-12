@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Add newline before each bullet point
                 description = description.replace(/-\s+/g, '<br>- ');
 
-                console.log(`Tab: ${tabName}, Header: ${header}, Date: ${date}, Description: ${description}`); // Debug log
+                // console.log(`Tab: ${tabName}, Header: ${header}, Date: ${date}, Description: ${description}`); 
 
                 // Create a content div for each experience
                 const contentDiv = document.createElement('div');
