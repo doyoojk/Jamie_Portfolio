@@ -40,16 +40,11 @@ jobs:
         with:
           # Upload entire repository
           path: '.'
-          
-      - name: Use Secret
-        run: |
-          echo "Using API URL ${{ secrets.API_URL }}"
-          echo "Using Token ${{ secrets.API_TOKEN }}"
         
       - name: Replace environment variables
         run: |
-          sed -i "s|__API_URL__|${{ secrets.API_URL }}|g" ./projects.js
-          sed -i "s|__MY_TOKEN__|${{ secrets.MY_TOKEN }}|g" ./projects.js
+          sed -i "s|__API_URL__|replace test|g" ./projects.js
+          sed -i "s|__MY_TOKEN__|replace test|g" ./projects.js
 
       - name: Debug after replacement
         run: |
