@@ -1,75 +1,63 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const apiUrl = 'https://api.github.com/users/doyoojk/repos';
-    const myToken = '__MY_TOKEN__';
-    const ignoreRepos = ['doyoojk','iCounsel'];
+    const ignoreRepos = ['doyoojk', 'iCounsel'];
 
-    console.log("Fetching repositories...");
-    console.log("API URL: " + apiUrl);
+    console.log("Fetching repositories from repos.json...");
 
-    fetch(apiUrl, {
-        method: 'GET', 
-        headers: {
-            'Authorization': `token ${myToken}`, 
-            'Accept': 'application/vnd.github.v3+json'
-        }
-    })
+    fetch('repos.json')
     .then(response => {
         if (!response.ok) {
             return response.json().then(err => {
-                throw new Error('GitHub API returned an error: ' + JSON.stringify(err));
+                throw new Error('Failed to load repos.json: ' + JSON.stringify(err));
             });
         }
         return response.json();
     })
     .then(repos => {
-      if (!Array.isArray(repos)) {
-        throw new Error('Expected an array of repositories, but got:', repos);
-      }
-      console.log(`Fetched ${repos.length} repositories.`);
-      repos.forEach(repo => {
-        if (ignoreRepos.includes(repo.name)) {
-            return;
+        if (!Array.isArray(repos)) {
+            throw new Error('Expected an array of repositories, but got:', repos);
         }
-        console.log(`Fetching README for repo: ${repo.name}`);
-        fetch(repo.contents_url.replace('{+path}', 'README.md'), {
-            method: 'GET',
-            headers: {
-                'Authorization': `token ${myToken}`,
-                'Accept': 'application/vnd.github.v3.raw'
+        console.log(`Fetched ${repos.length} repositories.`);
+        repos.forEach(repo => {
+            if (ignoreRepos.includes(repo.name)) {
+                return;
             }
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to fetch README: ' + response.statusText);
-            }
-            return response.text();
-        })
-        .then(readmeContent => {
-          const imageUrls = extractImageUrl(readmeContent);
-          if (imageUrls.length > 0) {
-            const firstImageUrl = imageUrls[0];
-            const rawUrl = firstImageUrl.replace('https://github.com', 'https://raw.githubusercontent.com').replace('/blob', '');
-            console.log(rawUrl);
-            displayRepository(repo, rawUrl);
-          } else {
-            console.log(`No GIF found in ${repo.name}`);
-          }
-        })
-        .catch(error => console.error('Error fetching README:', error));
-      });
+            console.log(`Fetching README for repo: ${repo.name}`);
+            fetch(repo.contents_url.replace('{+path}', 'README.md'), {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/vnd.github.v3.raw'
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch README: ' + response.statusText);
+                }
+                return response.text();
+            })
+            .then(readmeContent => {
+                const imageUrls = extractImageUrl(readmeContent);
+                if (imageUrls.length > 0) {
+                    const firstImageUrl = imageUrls[0];
+                    const rawUrl = firstImageUrl.replace('https://github.com', 'https://raw.githubusercontent.com').replace('/blob', '');
+                    console.log(rawUrl);
+                    displayRepository(repo, rawUrl);
+                } else {
+                    console.log(`No GIF found in ${repo.name}`);
+                }
+            })
+            .catch(error => console.error('Error fetching README:', error));
+        });
     })
     .catch(error => console.error('Error fetching repositories:', error));
 });
 
 function extractImageUrl(markdownContent) {
-    // This regex matches Markdown image syntax and HTML <img> tags with common image file extensions
     const imageRegex = /!\[[^\]]*\]\((.*?\.(gif|jpg|jpeg|png|bmp))\)|<img[^>]+src=["']([^"']+?\.(gif|jpg|jpeg|png|bmp))["']/gi;
     let matches, urls = [];
     while ((matches = imageRegex.exec(markdownContent)) !== null) {
-        // This will push the first captured group (Markdown) or third captured group (HTML) if it exists
         urls.push(matches[1] || matches[3]);
     }
-    return urls; // Return all found URLs
+    return urls;
 }
 
 function displayRepository(repo, gifPath) {
