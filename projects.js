@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     console.log("Fetching repositories...");
 
-    fetch(apiUrl, {
+    fetch('__API_URL__', {
         method: 'GET', 
         headers: {
-            'Authorization': `token ${myToken}`
+            'Authorization': 'token __MY_TOKEN__'
         }
     })
     .then(response => {
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(repo.contents_url.replace('{+path}', 'README.md'), {
             method: 'GET',
             headers: {
-                'Authorization': `token ${myToken}`,
+                'Authorization': `token __MY_TOKEN__`,
                 'Accept': 'application/vnd.github.v3.raw'
             }
         })
