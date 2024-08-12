@@ -13,6 +13,7 @@ on:
 permissions:
   contents: read
   pages: write
+  secrets: read
   id-token: write
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
@@ -45,13 +46,13 @@ jobs:
         
       - name: Replace environment variables
         run: |
-          sed -i 's|__API_URL__|${{ secrets.API_URL }}|g' projects.js
-          sed -i 's|__MY_TOKEN__|${{ secrets.MY_TOKEN }}|g' projects.js
+          sed -i "s|__API_URL__|${{ secrets.API_URL }}|g" ./projects.js
+          sed -i "s|__MY_TOKEN__|${{ secrets.MY_TOKEN }}|g" ./projects.js
 
       - name: Debug after replacement
         run: |
           echo "Displaying the contents of the script to verify replacement"
-          cat projects.js
+          cat ./projects.js
             
       - name: Deploy to GitHub Pages
         id: deployment
