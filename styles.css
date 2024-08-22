@@ -73,11 +73,11 @@ header nav ul li a:hover {
     margin-top: 10%;
     margin-left: 30%;
     margin-right: 30%;
-    margin-bottom: -20%;
+    /* margin-bottom: -20%; */
 }
 
 #skills {
-    margin-bottom: -10%;
+    /* margin-bottom: -10%; */
 }
 
 .skills-container, .experience-container, .projects-container, .contact-container {
@@ -180,7 +180,7 @@ body {
 }
 
 #experience {
-    margin-bottom: -10%;
+    /* margin-bottom: -10%; */
 }
 
 .experience-container {
