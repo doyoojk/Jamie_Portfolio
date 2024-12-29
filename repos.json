@@ -23,6 +23,7 @@
       "events_url": "https://api.github.com/users/doyoojk/events{/privacy}",
       "received_events_url": "https://api.github.com/users/doyoojk/received_events",
       "type": "User",
+      "user_view_type": "public",
       "site_admin": false
     },
     "html_url": "https://github.com/doyoojk/Animated-Kitty",
@@ -132,6 +133,7 @@
       "events_url": "https://api.github.com/users/doyoojk/events{/privacy}",
       "received_events_url": "https://api.github.com/users/doyoojk/received_events",
       "type": "User",
+      "user_view_type": "public",
       "site_admin": false
     },
     "html_url": "https://github.com/doyoojk/ATL-Path-Finder",
@@ -241,6 +243,7 @@
       "events_url": "https://api.github.com/users/doyoojk/events{/privacy}",
       "received_events_url": "https://api.github.com/users/doyoojk/received_events",
       "type": "User",
+      "user_view_type": "public",
       "site_admin": false
     },
     "html_url": "https://github.com/doyoojk/Cat-Fall",
@@ -350,6 +353,7 @@
       "events_url": "https://api.github.com/users/doyoojk/events{/privacy}",
       "received_events_url": "https://api.github.com/users/doyoojk/received_events",
       "type": "User",
+      "user_view_type": "public",
       "site_admin": false
     },
     "html_url": "https://github.com/doyoojk/doyoojk",
@@ -459,6 +463,7 @@
       "events_url": "https://api.github.com/users/doyoojk/events{/privacy}",
       "received_events_url": "https://api.github.com/users/doyoojk/received_events",
       "type": "User",
+      "user_view_type": "public",
       "site_admin": false
     },
     "html_url": "https://github.com/doyoojk/Emotion-Detection-Art",
@@ -568,6 +573,7 @@
       "events_url": "https://api.github.com/users/doyoojk/events{/privacy}",
       "received_events_url": "https://api.github.com/users/doyoojk/received_events",
       "type": "User",
+      "user_view_type": "public",
       "site_admin": false
     },
     "html_url": "https://github.com/doyoojk/graphics-HW1",
@@ -677,6 +683,7 @@
       "events_url": "https://api.github.com/users/doyoojk/events{/privacy}",
       "received_events_url": "https://api.github.com/users/doyoojk/received_events",
       "type": "User",
+      "user_view_type": "public",
       "site_admin": false
     },
     "html_url": "https://github.com/doyoojk/graphics-warmup",
@@ -786,6 +793,7 @@
       "events_url": "https://api.github.com/users/doyoojk/events{/privacy}",
       "received_events_url": "https://api.github.com/users/doyoojk/received_events",
       "type": "User",
+      "user_view_type": "public",
       "site_admin": false
     },
     "html_url": "https://github.com/doyoojk/I-Am-Rich",
@@ -895,6 +903,7 @@
       "events_url": "https://api.github.com/users/doyoojk/events{/privacy}",
       "received_events_url": "https://api.github.com/users/doyoojk/received_events",
       "type": "User",
+      "user_view_type": "public",
       "site_admin": false
     },
     "html_url": "https://github.com/doyoojk/iCounsel",
@@ -1004,6 +1013,7 @@
       "events_url": "https://api.github.com/users/doyoojk/events{/privacy}",
       "received_events_url": "https://api.github.com/users/doyoojk/received_events",
       "type": "User",
+      "user_view_type": "public",
       "site_admin": false
     },
     "html_url": "https://github.com/doyoojk/Info-Vis-Lab-3",
@@ -1113,6 +1123,7 @@
       "events_url": "https://api.github.com/users/doyoojk/events{/privacy}",
       "received_events_url": "https://api.github.com/users/doyoojk/received_events",
       "type": "User",
+      "user_view_type": "public",
       "site_admin": false
     },
     "html_url": "https://github.com/doyoojk/Jamie_Portfolio",
@@ -1156,14 +1167,14 @@
     "releases_url": "https://api.github.com/repos/doyoojk/Jamie_Portfolio/releases{/id}",
     "deployments_url": "https://api.github.com/repos/doyoojk/Jamie_Portfolio/deployments",
     "created_at": "2024-07-31T20:37:37Z",
-    "updated_at": "2024-08-22T19:39:36Z",
-    "pushed_at": "2024-08-22T19:39:33Z",
+    "updated_at": "2024-12-29T02:14:35Z",
+    "pushed_at": "2024-12-29T02:14:32Z",
     "git_url": "git://github.com/doyoojk/Jamie_Portfolio.git",
     "ssh_url": "git@github.com:doyoojk/Jamie_Portfolio.git",
     "clone_url": "https://github.com/doyoojk/Jamie_Portfolio.git",
     "svn_url": "https://github.com/doyoojk/Jamie_Portfolio",
     "homepage": null,
-    "size": 138,
+    "size": 144,
     "stargazers_count": 0,
     "watchers_count": 0,
     "language": "JavaScript",
@@ -1222,6 +1233,7 @@
       "events_url": "https://api.github.com/users/doyoojk/events{/privacy}",
       "received_events_url": "https://api.github.com/users/doyoojk/received_events",
       "type": "User",
+      "user_view_type": "public",
       "site_admin": false
     },
     "html_url": "https://github.com/doyoojk/loop_subdivision",
@@ -1331,6 +1343,7 @@
       "events_url": "https://api.github.com/users/doyoojk/events{/privacy}",
       "received_events_url": "https://api.github.com/users/doyoojk/received_events",
       "type": "User",
+      "user_view_type": "public",
       "site_admin": false
     },
     "html_url": "https://github.com/doyoojk/poetry-pipeline",
@@ -1440,6 +1453,7 @@
       "events_url": "https://api.github.com/users/doyoojk/events{/privacy}",
       "received_events_url": "https://api.github.com/users/doyoojk/received_events",
       "type": "User",
+      "user_view_type": "public",
       "site_admin": false
     },
     "html_url": "https://github.com/doyoojk/Road-Kill",
@@ -1549,6 +1563,7 @@
       "events_url": "https://api.github.com/users/doyoojk/events{/privacy}",
       "received_events_url": "https://api.github.com/users/doyoojk/received_events",
       "type": "User",
+      "user_view_type": "public",
       "site_admin": false
     },
     "html_url": "https://github.com/doyoojk/TapNDine",
@@ -1658,6 +1673,7 @@
       "events_url": "https://api.github.com/users/doyoojk/events{/privacy}",
       "received_events_url": "https://api.github.com/users/doyoojk/received_events",
       "type": "User",
+      "user_view_type": "public",
       "site_admin": false
     },
     "html_url": "https://github.com/doyoojk/VitrualSpaceSimulator",
