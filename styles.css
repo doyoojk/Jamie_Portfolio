@@ -139,6 +139,7 @@ form button:hover {
 
 html {
     scroll-behavior: smooth;
+    overscroll-behavior: none;
 }
 
 body {
