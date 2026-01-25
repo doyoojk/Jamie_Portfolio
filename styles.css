@@ -88,6 +88,12 @@ header nav ul li a:hover {
 
 .contact-container {
     width: 50%;
+    background-color: #31384E;
+    border: 1px solid rgb(0, 255, 255);
+    border-radius: 20px;
+    padding: 2rem;
+    opacity: 80%;
+    margin-top: 3rem;
 }
 
 #contact {
@@ -100,7 +106,7 @@ header nav ul li a:hover {
 }
 
 form {
-    margin-top: 10%;
+    margin-top: 1rem;
     width: 100%;  /* Sets the width of the form */
     max-width: 100%;  /* Ensures the form does not get too wide on larger screens */
     display: flex;
@@ -108,15 +114,32 @@ form {
     align-items: center;  /* Centers the form's children */
 }
 
-form input, form textarea, form button {
+form input, form textarea {
+    font-size: 1.3rem;
+    font-family: "Quicksand", sans-serif;
+    border-radius: 20px;
+    border: 1px solid rgb(0, 255, 255);
+    box-shadow: none;
+    width: 100%;
+    margin: 10px 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+form input::placeholder, form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+form button {
     font-size: 1rem;
     font-family: "Quicksand", sans-serif;
     border-radius: 20px;
     border: none;
     box-shadow: none;
-    width: 100%;  /* Makes sure each form element fills the form */
-    margin: 10px 0;  /* Adds vertical space between form elements */
-    padding: 15px;  /* Increases padding for better touch targets and readability */
+    width: 100%;
+    margin: 10px 0;
+    padding: 15px;
 }
 
 form textarea {
@@ -185,7 +208,7 @@ body {
 }
 
 .experience-container {
-    margin-top: 6%;
+    margin-top: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -208,13 +231,16 @@ body {
 
 .tabs {
     background-color: #211d30;
-    width: 25%;
+    width: fit-content;
     display: flex;
     flex-direction: column;
     border-right: rgb(0, 255, 255) 1px solid;
     border-left: rgb(0, 255, 255) 1px solid;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
+    padding-right: 2rem;
+    padding-left: 1.5rem;
+    padding-top: 1.5rem;
 }
 
 button {
@@ -228,31 +254,36 @@ button {
 }
 
 .tab-button {
-    height: 15%;
     font-family: 'Pixelify Sans', sans-serif;
     color: white;
-    font-size: 2rem;
-    padding: 10%;
-    padding-bottom: 20%;
-    border-bottom: rgb(0, 255, 255) 1px solid;
+    font-size: 1.8rem;
+    padding: 1rem 1.5rem;
     text-align: left;
     background: none;
     cursor: pointer;
     transition: background-color 0.3s;
+    white-space: nowrap;
 }
 
 .tab-button:first-child {
     border-top-left-radius: 20px;
 }
 
-.tab-button:hover {
-    background-color: #32323290;
+.tab-button:hover,
+.tab-button:active,
+.tab-button:focus {
+    background-color: transparent;
+    outline: none;
+    box-shadow: none;
 }
 
 .tab-content {
     display: none;
     padding: 20px;
+    padding-left: 2rem;
+    padding-top: 8rem;
     width: 75%;
+    text-align: left;
 }
 
 .tab-button img {
@@ -265,22 +296,23 @@ button {
     text-align: left;
     font-size: 2rem;
     font-weight: bold;
-    border-bottom: rgb(0, 255, 255) 1px solid;
     padding-bottom: 1.5%;
-    padding-right: 10%;
+    padding-left: 1rem;
 }
 
 .date-text {
     font-size: 1.5rem;
     text-align: right;
-    padding-right: 3%;
     padding-top: 2.5%;
+    float: right;
+    margin-right: 1rem;
 }
 
 .content-description {
     margin-top: 20px;
     text-align: left;
-    font-size: 2rem;
-    padding-left: 15%;
-    padding-right: 15%;
+    font-size: 1.8rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    line-height: 2.2;
 }

@@ -27,7 +27,7 @@
 }
 
 .project img {
-    width: 80%; /* Ensures the image takes up the full width of its container */
+    width: 50%; /* Ensures the image takes up the full width of its container */
     height: auto; /* Ensures the height matches the width to maintain aspect ratio */
     object-fit: cover; /* Ensures the image covers the area without distortion */
     aspect-ratio: 1 / 1; /* Keeps the width and height the same, creating a square */

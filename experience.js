@@ -46,14 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     openTab(evt, contentDiv.id);
                 };
 
-                // Add the icon and text to the button
-                const icon = document.createElement('img');
-                icon.src = './data/folder.svg'; // Path to the icon
-                icon.alt = 'Folder Icon';
-
-                // Append the icon and text to the button
-                tabButton.appendChild(icon);
-                tabButton.appendChild(document.createTextNode(tabName));
+                // Add "/" prefix and text to the button
+                tabButton.appendChild(document.createTextNode('/ ' + tabName));
 
                 document.querySelector('.tabs').appendChild(tabButton);
             });
