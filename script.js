@@ -102,3 +102,14 @@ window.addEventListener('load', () => {
     const grid = createMazePaths();
     createGhostAreas(grid);
 });
+
+// Home button scrolls to absolute top
+document.addEventListener('DOMContentLoaded', () => {
+    const homeLink = document.querySelector('a[href="#top"]');
+    if (homeLink) {
+        homeLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+});
