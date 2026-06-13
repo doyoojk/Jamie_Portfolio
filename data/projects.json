@@ -1,0 +1,68 @@
+{
+  "_note": "Curated project list for the maze gallery. Replaces the old GitHub README scraping. Add a local image/gif under assets/projects/ and set `media` to show it (poster shown by default, plays on hover).",
+  "projects": [
+    {
+      "id": "emotion-detection-art",
+      "title": "Emotion Detection Art",
+      "tag": "Python \u00b7 AI Vision",
+      "blurb": "Interactive art piece that reads facial emotion with computer vision and paints it with Python turtle.",
+      "accent": "#8b5cf6",
+      "repoUrl": "https://github.com/doyoojk/Emotion-Detection-Art",
+      "media": "assets/projects/emotion-detection-art.gif"
+    },
+    {
+      "id": "animated-kitty",
+      "title": "Animated Kitty",
+      "tag": "Processing",
+      "blurb": "Generative animation sketch built in Processing.",
+      "accent": "#ff8c4d",
+      "repoUrl": "https://github.com/doyoojk/Animated-Kitty",
+      "media": "assets/projects/animated-kitty.gif"
+    },
+    {
+      "id": "virtual-space-sim",
+      "title": "Virtual Space Sim",
+      "tag": "Processing",
+      "blurb": "An interactive virtual space simulator.",
+      "accent": "#4d6bd9",
+      "repoUrl": "https://github.com/doyoojk/VitrualSpaceSimulator",
+      "media": "assets/projects/virtual-space-sim.gif"
+    },
+    {
+      "id": "road-kill",
+      "title": "Road-Kill",
+      "tag": "Java \u00b7 Game",
+      "blurb": "An arcade-style road-crossing game built in Java.",
+      "accent": "#c86bd9",
+      "repoUrl": "https://github.com/doyoojk/Road-Kill",
+      "media": "assets/projects/road-kill.gif"
+    },
+    {
+      "id": "loop-subdivision",
+      "title": "Loop Subdivision",
+      "tag": "Processing \u00b7 3D",
+      "blurb": "Loop subdivision surface smoothing for 3D meshes.",
+      "accent": "#26b3a8",
+      "repoUrl": "https://github.com/doyoojk/loop_subdivision",
+      "media": "assets/projects/loop-subdivision.gif"
+    },
+    {
+      "id": "cat-fall",
+      "title": "Cat-Fall",
+      "tag": "C \u00b7 GBA",
+      "blurb": "Retro-style kitty fall game for a Game Boy Advance emulator.",
+      "accent": "#f56b6b",
+      "repoUrl": "https://github.com/doyoojk/Cat-Fall",
+      "media": "assets/projects/cat-fall.gif"
+    },
+    {
+      "id": "atl-path-finder",
+      "title": "ATL Path-Finder",
+      "tag": "Python",
+      "blurb": "Pathfinding over Atlanta map data.",
+      "accent": "#4cb875",
+      "repoUrl": "https://github.com/doyoojk/ATL-Path-Finder",
+      "media": "assets/projects/atl-path-finder.png"
+    }
+  ]
+}
