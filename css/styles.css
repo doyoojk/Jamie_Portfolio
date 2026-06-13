@@ -272,11 +272,17 @@ button {
     border-bottom: 1px solid var(--border);
     transform: translateY(-12px);
     opacity: 0;
-    transition: transform 0.25s ease, opacity 0.25s ease;
+    /* closed menu must not intercept taps — it stays in the DOM (display:flex)
+       for the open/close animation, so hide it from hit-testing explicitly */
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease;
 }
 .mobile-menu:not([hidden]) {
     transform: translateY(0);
     opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 }
 .mobile-menu a {
     font-family: var(--font-pixel);
