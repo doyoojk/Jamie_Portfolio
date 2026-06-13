@@ -1,0 +1,183 @@
+/* ============================================================
+   Projects — pacman maze gallery
+   ============================================================ */
+
+.maze {
+    --rg: clamp(20px, 3vw, 50px);
+    position: relative;
+    padding: clamp(26px, 4vw, 48px);
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid var(--border);
+    border-radius: 26px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+/* blue maze wall outline */
+.maze::before {
+    content: "";
+    position: absolute;
+    inset: 22px;
+    border: 2.5px solid rgba(61, 90, 241, 0.4);
+    border-radius: 18px;
+    pointer-events: none;
+}
+
+.maze__row {
+    display: flex;
+    justify-content: center;
+    gap: var(--rg);
+}
+
+/* ---- project room ---- */
+.proom {
+    position: relative;
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: calc((100% - 2 * var(--rg)) / 3);
+    aspect-ratio: 16 / 10;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--accent, var(--violet));
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 24px rgba(26, 30, 51, 0.12);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.proom:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 34px rgba(26, 30, 51, 0.18);
+}
+.proom__media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+}
+/* uniform hover animation on every tile (gif or static) */
+.proom:hover .proom__media {
+    transform: scale(1.07);
+}
+/* bottom overlay */
+.proom__overlay {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 14px 16px 14px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0));
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+}
+.proom__title {
+    font-family: var(--font-pixel);
+    font-size: 1.1rem;
+    color: #fff;
+    margin: 0;
+}
+.proom__tag {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.22);
+    padding: 5px 10px;
+    border-radius: 999px;
+}
+
+/* ---- pellet trail between rows ---- */
+.maze__trail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding-block: clamp(16px, 3vh, 32px);
+}
+.maze__trail .pellet {
+    width: 11px;
+    height: 11px;
+    background: #ffc847;
+}
+.maze__trail .pac {
+    --pac-size: 50px;
+}
+
+/* ---- ghost ---- */
+.ghost {
+    position: relative;
+    width: 36px;
+    height: 40px;
+    background: var(--gc, var(--cyan));
+    border-radius: 18px 18px 6px 6px;
+    flex: none;
+    cursor: pointer;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+.ghost::before,
+.ghost::after {
+    content: "";
+    position: absolute;
+    top: 11px;
+    width: 9px;
+    height: 11px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 45% 72%, var(--ink) 0 2.4px, #fff 2.5px);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+.ghost::before {
+    left: 6px;
+}
+.ghost::after {
+    right: 6px;
+}
+/* zigzag mouth — only shown in the vulnerable (hover) state. A stroked
+   zigzag line (not filled), so it reads as a squiggly lip rather than teeth. */
+.ghost__mouth {
+    position: absolute;
+    left: 50%;
+    bottom: 8px;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 7px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2028%208'%3E%3Cpath%20d='M0,6L4,2L8,6L12,2L16,6L20,2L24,6L28,2'%20fill='none'%20stroke='%23ffffff'%20stroke-width='1.8'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+/* hover = vulnerable ghost: body turns frightened-blue, eyes go small, zigzag mouth appears */
+.ghost:hover {
+    background: #2a39e8;
+}
+.ghost:hover::before,
+.ghost:hover::after {
+    top: 9px;
+    background: #fff;
+}
+.ghost:hover .ghost__mouth {
+    opacity: 1;
+}
+
+/* ---- responsive: stack into a vertical maze ---- */
+@media (max-width: 860px) {
+    .maze__row {
+        flex-direction: column;
+        gap: 14px;
+    }
+    .proom {
+        max-width: none;
+        aspect-ratio: 16 / 9;
+    }
+    .maze__trail {
+        gap: 12px;
+    }
+    .maze__trail .pac {
+        --pac-size: 38px;
+    }
+    .maze__trail .pellet {
+        width: 8px;
+        height: 8px;
+    }
+}

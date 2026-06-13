@@ -1,83 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jamie Kim</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&family=Quicksand:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="pacman.css">
-    <link rel="stylesheet" href="responsive.css">
-    <link rel="stylesheet" href="projects.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jamie Kim — Software Engineer</title>
+    <meta name="description" content="Jamie Kim — software engineer in San Francisco. I build solutions to complex human problems, treating code as a creative art." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single&family=Pixelify+Sans:wght@400..700&family=Quicksand:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/maze.css" />
 </head>
 <body>
-    <div id="top"></div>
-    <header id="header">
-        <nav>
-            <ul>
-                <li><a href="#top">Home</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+    <!-- ===== Nav ===== -->
+    <header class="nav" id="nav">
+        <a class="nav__logo" href="#home" aria-label="Jamie Kim, home">
+            <span class="pac-dot" aria-hidden="true"></span>
+            <span class="nav__logo-text">&lt;/ Jamie Kim &gt;</span>
+        </a>
+        <nav class="nav__links" aria-label="Primary">
+            <a href="#home" class="is-active">Home</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
         </nav>
+        <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+            <span></span><span></span><span></span>
+        </button>
     </header>
+
+    <!-- ===== Mobile menu ===== -->
+    <div class="mobile-menu" id="mobileMenu" hidden>
+        <a href="#home">Home</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </div>
+
     <main>
-        <section id="home" class="section">
-            <h1>Hello, my name is 
-                <br>
-                <span class="header-highlight"> < /Jamie Kim > </span></h1>
-            <p>I constantly strive to find solutions to complex human problems with complex programming and algorithms. My concentrations are in media and intelligence, and I approach coding as not just a technical skill but also as a form of creative art.
-                <br><br>
-                I often say that I like to live by the meaning of my Korean name 
-                <span class="highlight-text">"도유 (Doyou),"</span>
-                which means to find the right path. With skills that have been honed through experiences, such as leadership and creativity, I'm always excited to tackle the next step in my journey.</p>
-        </section>
-        <section id="skills" class="section">
-            <h2>Skills</h2>
-            <div class="skills-container">
-                <!-- Add your skills here -->
-                 <div class="skills-image">
-                    <img src="./data/skillsImage.svg" alt="Skills Image">
-                 </div>
-            </div>
-        </section>
-        <section id="experience" class="section">
-            <h2>Experience</h2>
-            <div class="experience-container">
-                <!-- Add your experience here -->
-                <div class="experience-panel">
-                    <div class="tabs"></div>
-                    <div class="tab-content"></div>
+        <!-- ===== Hero ===== -->
+        <section id="home" class="section hero">
+            <div class="container hero__inner">
+                <p class="eyebrow eyebrow--accent reveal">// hello world</p>
+                <h1 class="hero__greeting reveal">Hello, my name is</h1>
+                <h2 class="hero__name reveal"><span class="brk">&lt;/</span> Jamie Kim <span class="brk">&gt;</span></h2>
+                <p class="hero__lead reveal">
+                    I build solutions to complex human problems with code and algorithms &mdash;
+                    treating coding as a creative art as much as a technical craft. I live by my
+                    Korean name <span class="hl">&ldquo;도유 (Doyou)&rdquo;</span>: to find the right path.
+                </p>
+                <div class="hero__cta reveal">
+                    <a href="#projects" class="btn btn--primary">View projects&nbsp;&nbsp;&rarr;</a>
+                    <a href="#contact" class="btn btn--ghost">Get in touch</a>
+                </div>
+                <div class="hero__motif" aria-hidden="true">
+                    <span class="pac"></span>
+                    <span class="pellet" style="--s:16px;--c:var(--cyan)"></span>
+                    <span class="pellet" style="--s:13px;--c:var(--pink)"></span>
+                    <span class="pellet" style="--s:10px;--c:var(--orange)"></span>
+                    <span class="pellet" style="--s:8px;--c:var(--cyan)"></span>
                 </div>
             </div>
         </section>
-        <section id="projects" class="section">
-            <h2>Projects</h2>
-            <div class="projects-container">
-                <!--Projects added by JavaScript-->
+
+        <!-- ===== Skills ===== -->
+        <section id="skills" class="section">
+            <div class="container">
+                <header class="section-head reveal">
+                    <p class="eyebrow">01 &mdash; Skills</p>
+                    <h2 class="section-title">What I work with</h2>
+                </header>
+                <div class="skills-grid">
+                    <article class="skill-card reveal" style="--accent:var(--red)">
+                        <span class="skill-card__dot"></span>
+                        <h3 class="skill-card__title">Languages</h3>
+                        <ul class="chips"><li>Java</li><li>Python</li><li>JavaScript</li><li>SQL</li></ul>
+                    </article>
+                    <article class="skill-card reveal" style="--accent:var(--cyan)">
+                        <span class="skill-card__dot"></span>
+                        <h3 class="skill-card__title">Frontend</h3>
+                        <ul class="chips"><li>React</li><li>HTML</li><li>CSS</li><li>TypeScript</li></ul>
+                    </article>
+                    <article class="skill-card reveal" style="--accent:var(--pink)">
+                        <span class="skill-card__dot"></span>
+                        <h3 class="skill-card__title">Backend &amp; Frameworks</h3>
+                        <ul class="chips"><li>Node.js</li><li>Spring Boot</li></ul>
+                    </article>
+                    <article class="skill-card reveal" style="--accent:var(--orange)">
+                        <span class="skill-card__dot"></span>
+                        <h3 class="skill-card__title">Testing &amp; CI/CD</h3>
+                        <ul class="chips"><li>JUnit</li><li>Jest</li><li>SonarQube</li></ul>
+                    </article>
+                    <article class="skill-card reveal" style="--accent:var(--yellow)">
+                        <span class="skill-card__dot"></span>
+                        <h3 class="skill-card__title">Automation &amp; Tools</h3>
+                        <ul class="chips"><li>Ansible</li><li>Concord</li><li>Git</li><li>REST APIs</li><li>Docker</li><li>Kubernetes</li></ul>
+                    </article>
+                    <article class="skill-card reveal" style="--accent:var(--blue)">
+                        <span class="skill-card__dot"></span>
+                        <h3 class="skill-card__title">Cloud Platforms</h3>
+                        <ul class="chips"><li>Azure</li><li>AWS</li></ul>
+                    </article>
+                    <article class="skill-card skill-card--wide reveal" style="--accent:var(--violet)">
+                        <div class="skill-card__lead">
+                            <div class="skill-card__heading">
+                                <span class="skill-card__dot"></span>
+                                <h3 class="skill-card__title">Creative &amp; Media</h3>
+                            </div>
+                            <p class="skill-card__sub">design &middot; motion &middot; generative art</p>
+                        </div>
+                        <ul class="chips"><li>Processing</li><li>p5.js</li><li>Three.js</li><li>Figma</li><li>Photoshop</li><li>Video Editing</li></ul>
+                    </article>
+                </div>
             </div>
         </section>
+
+        <!-- ===== Experience ===== -->
+        <section id="experience" class="section">
+            <div class="container">
+                <header class="section-head reveal">
+                    <p class="eyebrow">02 &mdash; Experience</p>
+                    <h2 class="section-title">Where I&rsquo;ve worked</h2>
+                </header>
+                <div class="xp reveal">
+                    <div class="xp__tabs" role="tablist" aria-label="Experience">
+                        <button class="xp__tab is-active" role="tab" aria-selected="true" data-panel="xp-loop">/ Loop</button>
+                        <button class="xp__tab" role="tab" aria-selected="false" data-panel="xp-walmart24">/ Walmart</button>
+                        <button class="xp__tab" role="tab" aria-selected="false" data-panel="xp-walmart23">/ Walmart &rsquo;23</button>
+                        <button class="xp__tab" role="tab" aria-selected="false" data-panel="xp-gt">/ Georgia Tech</button>
+                        <button class="xp__tab" role="tab" aria-selected="false" data-panel="xp-aptor">/ Aptor</button>
+                    </div>
+                    <div class="xp__body">
+                        <article class="xp__panel is-active" id="xp-loop" role="tabpanel">
+                            <div class="xp__top">
+                                <div>
+                                    <h3 class="xp__company">Loop</h3>
+                                    <p class="xp__role">Software Engineer &middot; San Francisco, CA</p>
+                                </div>
+                                <span class="xp__date">Jan 2026 &ndash; Present</span>
+                            </div>
+                            <p class="xp__summary">Loop is a freight-payments platform, where the data is famously messy. I build full-stack systems that turn that mess into accurate, flexible, and fast outcomes for customers &mdash; taking features end to end, from data model and pipeline through the interface.</p>
+                            <ul class="xp__list">
+                                <li>Take features end to end &mdash; designing the data model, building Temporal-orchestrated backend services, and shipping the React &amp; Relay UI on top (including a location-modeling system built from scratch, now reused across the product).</li>
+                                <li>Make cost allocation accurate and flexible &mdash; map freight charges to the right GL codes and cost centers with rules that flex to each client&rsquo;s structure, replacing brittle hand-maintained lookups with logic that&rsquo;s portable and auditable.</li>
+                                <li>Streamline onboarding and experiment with AI &mdash; build self-service setup tooling that cuts manual ops work, and prototype AI-assisted matching and normalization on messy customer data, staying honest about where it adds value vs. cost.</li>
+                            </ul>
+                        </article>
+                        <article class="xp__panel" id="xp-walmart24" role="tabpanel" hidden>
+                            <div class="xp__top">
+                                <div>
+                                    <h3 class="xp__company">Walmart Global Tech</h3>
+                                    <p class="xp__role">Software Engineer II &middot; Sunnyvale, CA</p>
+                                </div>
+                                <span class="xp__date">Jul 2024 &ndash; Dec 2025</span>
+                            </div>
+                            <ul class="xp__list">
+                                <li>Launched an end-to-end self-service certificate management product for app teams &mdash; covering renewal checks, install, and obsolete handling.</li>
+                                <li>Built and expanded internal React UI component libraries, improving usability for 215 customer teams and shipping reusable error handling adopted by 35+ apps.</li>
+                                <li>Migrated legacy Java/JVM apps off Tomcat &amp; WebSphere to containerized cloud platforms, improving scalability, maintainability, and CI/CD.</li>
+                            </ul>
+                        </article>
+                        <article class="xp__panel" id="xp-walmart23" role="tabpanel" hidden>
+                            <div class="xp__top">
+                                <div>
+                                    <h3 class="xp__company">Walmart Global Tech</h3>
+                                    <p class="xp__role">Software Engineer Intern &middot; Sunnyvale, CA</p>
+                                </div>
+                                <span class="xp__date">Jun &ndash; Aug 2023</span>
+                            </div>
+                            <ul class="xp__list">
+                                <li>Built an intuitive application leveraging Walmart&rsquo;s vendor maintenance data, integrating REST APIs for real-time sync to AzureSQL for dynamic visualization.</li>
+                                <li>Implemented proactive alerting for scheduling conflicts, improving operational coordination across teams.</li>
+                            </ul>
+                        </article>
+                        <article class="xp__panel" id="xp-gt" role="tabpanel" hidden>
+                            <div class="xp__top">
+                                <div>
+                                    <h3 class="xp__company">Georgia Tech OIT</h3>
+                                    <p class="xp__role">Web Developer &middot; Atlanta, GA</p>
+                                </div>
+                                <span class="xp__date">Oct 2022 &ndash; May 2024</span>
+                            </div>
+                            <ul class="xp__list">
+                                <li>Redesigned and maintained high-traffic student-facing pages (housing, registration) with modern HTML/CSS/JS, improving accessibility and responsiveness.</li>
+                                <li>Refactored backend database logic, resolving performance bottlenecks during peak enrollment traffic.</li>
+                            </ul>
+                        </article>
+                        <article class="xp__panel" id="xp-aptor" role="tabpanel" hidden>
+                            <div class="xp__top">
+                                <div>
+                                    <h3 class="xp__company">Aptor</h3>
+                                    <p class="xp__role">Frontend Engineer &middot; Seoul, KR</p>
+                                </div>
+                                <span class="xp__date">Jul 2022 &ndash; May 2023</span>
+                            </div>
+                            <ul class="xp__list">
+                                <li>Developed the prototype launch of Aptor, a platform streamlining the buying and selling of South Korean entertainment licenses, using React, HTML, CSS, and JavaScript.</li>
+                                <li>Integrated frontend components with backend services in an agile environment, improving efficiency in processing licensing agreements.</li>
+                            </ul>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Projects (pacman maze) ===== -->
+        <section id="projects" class="section">
+            <div class="container">
+                <header class="section-head reveal">
+                    <p class="eyebrow">03 &mdash; Projects</p>
+                    <h2 class="section-title">Enter the maze</h2>
+                    <p class="section-sub">Each room is a project pacman&rsquo;s been collecting. Follow the trail &mdash; hover to discover more.</p>
+                </header>
+                <div class="maze reveal" id="maze" aria-label="Projects">
+                    <!-- rendered by projects.js -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== Contact ===== -->
         <section id="contact" class="section">
-            <h2>Contact</h2>
-            <div class="contact-container">
-                <form action="https://formspree.io/f/mblryoyv" method="POST">
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <textarea name="message" placeholder="Your Message" required></textarea>
-                    <button type="submit">Send</button>
-                </form>
+            <div class="container">
+                <header class="section-head reveal">
+                    <p class="eyebrow">04 &mdash; Contact</p>
+                    <h2 class="section-title">Let&rsquo;s build something</h2>
+                </header>
+                <div class="contact-card reveal">
+                    <div class="contact-card__info">
+                        <h3 class="contact-card__title">Let&rsquo;s connect</h3>
+                        <p class="contact-card__lead">Open to new opportunities and collaborations. Drop a line and I&rsquo;ll get back to you.</p>
+                        <ul class="contact-links">
+                            <li style="--c:var(--cyan)"><a href="mailto:doyoojk@gmail.com">doyoojk@gmail.com</a></li>
+                            <li style="--c:var(--pink)"><a href="https://www.linkedin.com/in/jamiekimm/" target="_blank" rel="noopener">linkedin.com/in/jamiekimm</a></li>
+                            <li style="--c:var(--orange)"><a href="https://github.com/doyoojk" target="_blank" rel="noopener">github.com/doyoojk</a></li>
+                            <li style="--c:var(--yellow)"><span>San Francisco, CA</span></li>
+                        </ul>
+                    </div>
+                    <form class="contact-card__form" action="https://formspree.io/f/mblryoyv" method="POST">
+                        <input type="text" name="name" placeholder="Your name" required />
+                        <input type="email" name="email" placeholder="you@email.com" required />
+                        <textarea name="message" rows="4" placeholder="Tell me about your project&hellip;" required></textarea>
+                        <button type="submit" class="btn btn--primary btn--block">Send&nbsp;&nbsp;&rarr;</button>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
-    <div id="cursor-effect"></div>
+
+    <!-- ===== Footer ===== -->
+    <footer class="footer">
+        <div class="container footer__inner">
+            <div class="footer__brand">
+                <span class="footer__logo">&lt;/ Jamie Kim &gt;</span>
+                <span class="footer__copy">&copy; 2026 Jamie Kim &middot; Software Engineer, San Francisco</span>
+            </div>
+            <div class="footer__right">
+                <nav class="footer__links" aria-label="Footer">
+                    <a href="https://github.com/doyoojk" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://www.linkedin.com/in/jamiekimm/" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="mailto:doyoojk@gmail.com">Email</a>
+                </nav>
+                <div class="footer__motif" aria-hidden="true">
+                    <span class="pac pac--sm"></span>
+                    <span class="pellet" style="--s:6px;--c:var(--cyan)"></span>
+                    <span class="pellet" style="--s:6px;--c:var(--pink)"></span>
+                    <span class="pellet" style="--s:6px;--c:var(--yellow)"></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="pac-cursor" id="pacCursor" aria-hidden="true"></div>
+
+    <script src="js/script.js" defer></script>
+    <script src="js/projects.js" defer></script>
 </body>
-    <div id="maze-background"></div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-    <!-- <script src="sensitive.js"></script> -->
-    <script src="pacman.js"></script>
-    <script src="script.js"></script>
-    <script src="experience.js?v=3"></script>
-    <script src="projects.js"></script>
 </html>
