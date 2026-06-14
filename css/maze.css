@@ -160,24 +160,72 @@
     opacity: 1;
 }
 
-/* ---- responsive: stack into a vertical maze ---- */
+/* mobile-only descending-maze decoration (hidden on desktop) */
+.maze__mtrail {
+    display: none;
+}
+
+/* ---- responsive: zigzag mini-maze ---- */
 @media (max-width: 860px) {
-    .maze__row {
+    .maze {
+        display: flex;
         flex-direction: column;
-        gap: 14px;
+        align-items: stretch;
+        gap: 26px;
     }
-    .proom {
-        max-width: none;
-        aspect-ratio: 16 / 9;
+    .maze__row {
+        display: contents; /* flatten the row groups into one column */
     }
     .maze__trail {
-        gap: 12px;
+        display: none; /* hide the horizontal desktop trails */
     }
-    .maze__trail .pac {
-        --pac-size: 38px;
+
+    .proom {
+        flex: none; /* in a column, flex:1 1 0 would zero the height — let aspect-ratio drive it */
+        width: 74%;
+        max-width: none;
+        aspect-ratio: 4 / 3;
+        z-index: 1;
     }
-    .maze__trail .pellet {
-        width: 8px;
-        height: 8px;
+    .proom--left {
+        align-self: flex-start;
+    }
+    .proom--right {
+        align-self: flex-end;
+    }
+
+    /* dotted pellet trail down the centre, behind the rooms */
+    .maze::after {
+        content: "";
+        position: absolute;
+        top: 46px;
+        bottom: 46px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-left: 3px dotted #ffc847;
+        opacity: 0.55;
+        z-index: 0;
+    }
+
+    /* pacman descending the trail + a ghost partway down */
+    .maze__mtrail {
+        display: block;
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+    }
+    .maze__mtrail-pac {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%) rotate(90deg);
+        --pac-size: 32px;
+    }
+    .maze__mtrail-ghost {
+        position: absolute;
+        top: 47%;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }

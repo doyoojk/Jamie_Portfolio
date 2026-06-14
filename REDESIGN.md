@@ -32,20 +32,19 @@ only as tasteful **accents**. Projects get a creative **pacman-maze gallery** tr
   rooms alternating across a pellet trail, pacman + ghost).
 
 ## Status
-- [x] Desktop v1 mockup (Figma)
-- [x] Mobile v1 mockup (Figma)
-- [x] Mobile sizing pass (scaled down type/cards, wider margins)
+- [x] Desktop + mobile mockups (Figma)
+- [x] **v2 shipped in code** (PR #2, merged): light grid theme, pacman maze gallery, Bitcount
+      Prop Single font, curated `data/projects.json` + local GIFs (no more GitHub README
+      scraping), resume-accurate Skills/Experience, fluid/responsive layout.
+- [x] Deploy hotfix (PR #3, merged): `js/projects.js` was gitignored → 404 on the live site.
 
-## TODO — implementation (in code)
-- [ ] Rebuild `index.html` + CSS to match the Figma v1 (fluid layout: `clamp()`, flex/grid;
-      drop the percentage/negative margins + scroll-snap hacks).
-- [ ] Light grid background; pacman as accents only.
-- [ ] Load **Bitcount Prop Single** (+ chosen pixel font) via Google Fonts.
-- [ ] Build the desktop pacman-maze projects gallery + mobile zigzag version.
-- [ ] **Replace GitHub README-scraping in `projects.js`** with curated **local assets**.
-      GitHub unauth API is 60 req/hr and currently called per-repo per-page-load.
-      - Curated `projects.json`: `{ title, blurb, tags, image, gif, repoUrl, demoUrl }`.
-      - Cards show a poster frame by default, play GIF/short muted video on hover/tap.
-      - Optional: one-time script reusing existing extraction logic to pull current GIFs local.
-- [ ] Responsive breakpoints + smooth animations.
-- [ ] Update Skills/Experience copy from resume.
+## TODO
+- [ ] **Clean up the Pages deploy workflow** (`.github/workflows/static.yml`): remove the leftover
+      v1 steps (*Setup Node.js*, *Fetch GitHub repos*, *Commit data*) that regenerate and
+      re-commit the obsolete `repos.json` on every deploy, drop the `contents: write` permission,
+      and delete `repos.json`. Requires a token with `workflow` scope (`gh auth refresh -s workflow`).
+- [ ] **Mobile layout** (in progress — branch `feat/mobile-layout`): zigzag mini-maze for the
+      projects section + compact mobile sizing. Also carries the closed-mobile-menu tap-interception
+      fix (the menu kept `display:flex` and swallowed taps near the top of the page).
+- [ ] Media optimization: convert project GIFs → mp4/webm to shrink the ~19MB payload
+      (`scripts/optimize-media.py`, needs `ffmpeg`).

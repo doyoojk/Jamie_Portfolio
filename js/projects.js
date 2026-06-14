@@ -40,6 +40,34 @@ function renderMaze(maze, projects) {
         maze.appendChild(buildRow(row));
         if (i < rows.length - 1) maze.appendChild(buildTrail(trailIndex++));
     });
+
+    // alternate each room left/right for the mobile zigzag layout
+    maze.querySelectorAll(".proom").forEach((card, i) => {
+        card.classList.add(i % 2 === 0 ? "proom--left" : "proom--right");
+    });
+
+    // mobile-only: pacman descending the centre trail + a ghost
+    maze.appendChild(buildMobileTrail());
+}
+
+function buildMobileTrail() {
+    const deco = document.createElement("div");
+    deco.className = "maze__mtrail";
+    deco.setAttribute("aria-hidden", "true");
+
+    const pac = document.createElement("span");
+    pac.className = "pac maze__mtrail-pac";
+    deco.appendChild(pac);
+
+    const ghost = document.createElement("span");
+    ghost.className = "ghost maze__mtrail-ghost";
+    ghost.style.setProperty("--gc", "var(--pink)");
+    const mouth = document.createElement("span");
+    mouth.className = "ghost__mouth";
+    ghost.appendChild(mouth);
+    deco.appendChild(ghost);
+
+    return deco;
 }
 
 function buildRow(projects) {
