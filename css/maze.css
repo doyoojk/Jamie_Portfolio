@@ -160,24 +160,60 @@
     opacity: 1;
 }
 
-/* ---- responsive: stack into a vertical maze ---- */
+/* ---- responsive: vertical stacked mini-maze ---- */
 @media (max-width: 860px) {
-    .maze__row {
+    .maze {
+        display: flex;
         flex-direction: column;
-        gap: 14px;
-    }
-    .proom {
-        max-width: none;
-        aspect-ratio: 16 / 9;
+        align-items: center;
+        gap: 0;
+        padding-block: 46px;
     }
     .maze__trail {
-        gap: 12px;
+        display: none; /* desktop horizontal trails not used on mobile */
     }
-    .maze__trail .pac {
-        --pac-size: 38px;
+    .proom {
+        flex: none; /* column flex: let width + aspect-ratio drive the size */
+        width: 80%;
+        max-width: none;
+        aspect-ratio: 7 / 3;
     }
-    .maze__trail .pellet {
-        width: 8px;
-        height: 8px;
+
+    /* pacman descending from the top of the stack */
+    .maze__pac-down {
+        --pac-size: 28px;
+        transform: rotate(90deg);
+        margin-bottom: 22px;
+    }
+
+    /* connector between two rooms: a run of pellet dots, or a ghost */
+    .maze__conn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        padding: 13px 0;
+    }
+    .maze__conn-pellet {
+        width: 7px;
+        height: 7px;
+        background: #ffc847;
+    }
+    .maze__conn .ghost {
+        width: 28px;
+        height: 30px;
+    }
+    .maze__conn .ghost::before,
+    .maze__conn .ghost::after {
+        top: 8px;
+        width: 7px;
+        height: 9px;
+    }
+    .maze__conn .ghost::before {
+        left: 5px;
+    }
+    .maze__conn .ghost::after {
+        right: 5px;
     }
 }

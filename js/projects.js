@@ -27,19 +27,73 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function renderMaze(maze, projects) {
+    drawMaze(maze, projects);
+    // re-render when crossing the mobile breakpoint (desktop rows <-> mobile stack)
+    const mq = window.matchMedia("(max-width: 860px)");
+    let wasMobile = mq.matches;
+    window.addEventListener("resize", () => {
+        if (mq.matches !== wasMobile) {
+            wasMobile = mq.matches;
+            drawMaze(maze, projects);
+        }
+    });
+}
+
+function drawMaze(maze, projects) {
     maze.innerHTML = "";
+    if (window.matchMedia("(max-width: 860px)").matches) drawMobile(maze, projects);
+    else drawDesktop(maze, projects);
+}
 
-    // split into rows of three
+// desktop: rows of three with a horizontal pellet trail between rows
+function drawDesktop(maze, projects) {
     const rows = [];
-    for (let i = 0; i < projects.length; i += 3) {
-        rows.push(projects.slice(i, i + 3));
-    }
-
+    for (let i = 0; i < projects.length; i += 3) rows.push(projects.slice(i, i + 3));
     let trailIndex = 0;
     rows.forEach((row, i) => {
         maze.appendChild(buildRow(row));
         if (i < rows.length - 1) maze.appendChild(buildTrail(trailIndex++));
     });
+}
+
+// mobile: a single vertical stack — pacman descends from the top, with a
+// pellet/ghost connector between each pair of rooms
+function drawMobile(maze, projects) {
+    maze.appendChild(buildPacDown());
+    projects.forEach((p, i) => {
+        maze.appendChild(buildRoom(p));
+        if (i < projects.length - 1) maze.appendChild(buildConnector(i));
+    });
+}
+
+function buildPacDown() {
+    const pac = document.createElement("span");
+    pac.className = "pac maze__pac-down";
+    pac.setAttribute("aria-hidden", "true");
+    return pac;
+}
+
+function buildConnector(i) {
+    const conn = document.createElement("div");
+    conn.className = "maze__conn";
+    conn.setAttribute("aria-hidden", "true");
+    if (i % 2 === 0) {
+        for (let k = 0; k < 3; k++) {
+            const d = document.createElement("span");
+            d.className = "pellet maze__conn-pellet";
+            conn.appendChild(d);
+        }
+    } else {
+        const colors = ["var(--cyan)", "var(--pink)", "var(--orange)"];
+        const ghost = document.createElement("span");
+        ghost.className = "ghost";
+        ghost.style.setProperty("--gc", colors[Math.floor(i / 2) % colors.length]);
+        const mouth = document.createElement("span");
+        mouth.className = "ghost__mouth";
+        ghost.appendChild(mouth);
+        conn.appendChild(ghost);
+    }
+    return conn;
 }
 
 function buildRow(projects) {
