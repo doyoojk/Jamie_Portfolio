@@ -698,10 +698,27 @@ button {
         min-height: auto;
         padding-block: clamp(64px, 12vw, 96px);
     }
+    .hero__inner {
+        text-align: center;
+    }
+    .hero__lead {
+        margin-inline: auto;
+    }
+    .hero__cta {
+        justify-content: center;
+        gap: 12px;
+    }
+    .hero__cta .btn {
+        flex: none;
+        width: 140px;
+        padding: 11px 0;
+        font-size: 0.85rem;
+    }
     .hero__motif {
         position: static;
         transform: none;
         margin-top: 32px;
+        justify-content: center;
     }
     .hero__motif .pac {
         --pac-size: 64px;

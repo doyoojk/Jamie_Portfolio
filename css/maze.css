@@ -160,72 +160,59 @@
     opacity: 1;
 }
 
-/* mobile-only descending-maze decoration (hidden on desktop) */
-.maze__mtrail {
-    display: none;
-}
-
-/* ---- responsive: zigzag mini-maze ---- */
+/* ---- responsive: vertical stacked mini-maze ---- */
 @media (max-width: 860px) {
     .maze {
         display: flex;
         flex-direction: column;
-        align-items: stretch;
-        gap: 26px;
-    }
-    .maze__row {
-        display: contents; /* flatten the row groups into one column */
+        align-items: center;
+        gap: 0;
     }
     .maze__trail {
-        display: none; /* hide the horizontal desktop trails */
+        display: none; /* desktop horizontal trails not used on mobile */
     }
-
     .proom {
-        flex: none; /* in a column, flex:1 1 0 would zero the height — let aspect-ratio drive it */
-        width: 74%;
+        flex: none; /* column flex: let width + aspect-ratio drive the size */
+        width: 80%;
         max-width: none;
-        aspect-ratio: 4 / 3;
-        z-index: 1;
-    }
-    .proom--left {
-        align-self: flex-start;
-    }
-    .proom--right {
-        align-self: flex-end;
+        aspect-ratio: 7 / 3;
     }
 
-    /* dotted pellet trail down the centre, behind the rooms */
-    .maze::after {
-        content: "";
-        position: absolute;
-        top: 46px;
-        bottom: 46px;
-        left: 50%;
-        transform: translateX(-50%);
-        border-left: 3px dotted #ffc847;
-        opacity: 0.55;
-        z-index: 0;
+    /* pacman descending from the top of the stack */
+    .maze__pac-down {
+        --pac-size: 28px;
+        transform: rotate(90deg);
+        margin-bottom: 6px;
     }
 
-    /* pacman descending the trail + a ghost partway down */
-    .maze__mtrail {
-        display: block;
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        z-index: 0;
+    /* connector between two rooms: a run of pellet dots, or a ghost */
+    .maze__conn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        padding: 13px 0;
     }
-    .maze__mtrail-pac {
-        position: absolute;
-        top: 10px;
-        left: 50%;
-        transform: translateX(-50%) rotate(90deg);
-        --pac-size: 32px;
+    .maze__conn-pellet {
+        width: 7px;
+        height: 7px;
+        background: #ffc847;
     }
-    .maze__mtrail-ghost {
-        position: absolute;
-        top: 47%;
-        left: 50%;
-        transform: translateX(-50%);
+    .maze__conn .ghost {
+        width: 28px;
+        height: 30px;
+    }
+    .maze__conn .ghost::before,
+    .maze__conn .ghost::after {
+        top: 8px;
+        width: 7px;
+        height: 9px;
+    }
+    .maze__conn .ghost::before {
+        left: 5px;
+    }
+    .maze__conn .ghost::after {
+        right: 5px;
     }
 }
