@@ -183,7 +183,7 @@
     .maze__pac-down {
         --pac-size: 28px;
         transform: rotate(90deg);
-        margin-bottom: 6px;
+        margin-bottom: 22px;
     }
 
     /* connector between two rooms: a run of pellet dots, or a ghost */
