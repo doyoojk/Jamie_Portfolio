@@ -167,6 +167,7 @@
         flex-direction: column;
         align-items: center;
         gap: 0;
+        padding-block: 46px;
     }
     .maze__trail {
         display: none; /* desktop horizontal trails not used on mobile */
