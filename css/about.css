@@ -1,0 +1,230 @@
+/* ============================================================
+   About — arcade cabinet (desktop only for now)
+   Screen "powers on" after a coin-insert + pacman crossing.
+   ============================================================ */
+
+.cabinet {
+    --screen: #23283f;
+    --screen-text: #ffffff;
+    --screen-soft: #9aa3b5;
+    --screen-chip: #2b3148;
+    --bezel: #0d0f18;
+    --deck: #d9dce6;
+    --ctrl: #212433;
+
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    padding: 26px;
+    border-radius: 32px;
+    background: #e8eaf1;
+    border: 1px solid #d3d7e0;
+    box-shadow: var(--shadow-lg);
+}
+
+/* lit marquee header */
+.cabinet__marquee {
+    text-align: center;
+    font-family: var(--font-pixel);
+    font-size: 1.05rem;
+    letter-spacing: 2px;
+    color: #fff;
+    background: #6f7589;
+    padding: 13px;
+    border-radius: 12px;
+}
+
+/* monitor bezel + screen */
+.cabinet__monitor {
+    background: var(--bezel);
+    border-radius: 22px;
+    padding: 8px;
+}
+.cabinet__screen {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    background: var(--screen);
+    padding: 36px 42px;
+    min-height: 430px;
+}
+
+/* HUD (always on) */
+.screen__hud {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-pixel);
+    letter-spacing: 1px;
+    margin-bottom: 26px;
+}
+.screen__hud-l { color: var(--yellow); font-size: 0.95rem; }
+.screen__hud-r { color: var(--screen-soft); font-size: 0.95rem; }
+
+/* ---- screen content (revealed) ---- */
+.screen__body { display: flex; gap: 48px; align-items: flex-start; }
+.about__left { flex: 0 0 320px; }
+.about__right { flex: 1; min-width: 0; }
+
+.about__avatar { --pac-size: 90px; display: block; margin-bottom: 16px; }
+.about__name { font-family: var(--font-pixel); font-size: 1.8rem; color: var(--screen-text); margin: 0 0 12px; }
+.about__blurb { font-size: 0.92rem; line-height: 1.65; color: var(--screen-soft); margin: 0 0 16px; }
+
+.about__socials { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.about__socials a {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 7px 13px 7px 11px; border-radius: 999px;
+    background: var(--screen-chip); color: var(--screen-text);
+    font-size: 0.8rem; font-weight: 500;
+    transition: transform 0.15s ease, background 0.2s ease;
+}
+.about__socials a::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--c, var(--yellow)); }
+.about__socials a:hover { transform: translateY(-2px); background: #333b56; }
+
+.about__label { font-family: var(--font-pixel); font-size: 0.85rem; letter-spacing: 1px; color: var(--yellow); margin: 0 0 12px; }
+.about__right .about__label:not(:first-child) { margin-top: 22px; }
+
+.about__chase { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; }
+.about__chase li { display: flex; align-items: center; gap: 10px; color: var(--screen-text); font-size: 0.95rem; }
+.about__chase .ghost { width: 24px; height: 26px; flex: none; }
+.about__chase .ghost::before, .about__chase .ghost::after { top: 8px; width: 6px; height: 8px; }
+.about__chase .ghost::before { left: 5px; }
+.about__chase .ghost::after { right: 5px; }
+
+.about__scores { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.about__scores li { background: var(--screen-chip); color: var(--screen-soft); font-size: 0.8rem; font-weight: 500; padding: 7px 12px; border-radius: 999px; }
+
+.about__creative {
+    margin-top: 22px; display: flex; align-items: center; gap: 14px;
+    padding: 14px 18px; border-radius: 14px;
+    background: #1f2438; border: 1.5px solid rgba(255, 95, 162, 0.6);
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+.about__creative:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(255, 95, 162, 0.25); }
+.about__creative-icon { width: 34px; height: 34px; border-radius: 50%; flex: none; background: var(--pink); }
+.about__creative-text { display: flex; flex-direction: column; gap: 2px; }
+.about__creative-title { font-family: var(--font-pixel); font-size: 0.95rem; color: var(--screen-text); }
+.about__creative-sub { font-size: 0.8rem; color: var(--screen-soft); }
+
+/* ---- loading overlay (shown only while "armed") ---- */
+.screen__loading {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.screen__track {
+    position: absolute;
+    top: 46%;
+    left: 9%;
+    right: 9%;
+    height: 0;
+}
+.screen__pellet {
+    position: absolute;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ffc847;
+    transform: translate(-50%, -50%);
+}
+.screen__crosser {
+    --pac-size: 30px;
+    position: absolute;
+    top: 0;
+    left: 5%;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+}
+.screen__prompt {
+    margin: 0;
+    margin-top: 60px;
+    font-family: var(--font-pixel);
+    font-size: 1.25rem;
+    letter-spacing: 2px;
+    color: var(--yellow);
+}
+
+/* ---- control deck ---- */
+.cabinet__deck {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--deck);
+    border-radius: 18px;
+    padding: 22px 48px;
+}
+.deck__joystick { position: relative; width: 76px; height: 92px; flex: none; }
+.deck__joystick .deck__base { position: absolute; bottom: 0; left: 12px; width: 52px; height: 52px; border-radius: 50%; background: var(--ctrl); }
+.deck__joystick .deck__stem { position: absolute; bottom: 26px; left: 32px; width: 12px; height: 48px; border-radius: 6px; background: var(--ctrl); transform-origin: 50% 100%; transform: rotate(22deg); }
+.deck__joystick .deck__ball { position: absolute; top: 6px; left: 41px; width: 30px; height: 30px; border-radius: 50%; background: var(--red); }
+/* buttons centered in the deck regardless of joystick/coin width */
+.deck__buttons { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: flex; gap: 20px; }
+.deck__buttons i { width: 40px; height: 40px; border-radius: 50%; background: var(--b, var(--yellow)); border: 3px solid #666e80; }
+.deck__coin { position: relative; display: flex; align-items: center; gap: 10px; }
+.deck__slot { position: relative; z-index: 1; width: 12px; height: 46px; border-radius: 6px; background: var(--ctrl); }
+/* coin appears only during the insert animation, sliding left-to-right into the slot;
+   the slot (z-index 1) overlays whatever has gone in, the part still outside stays visible */
+.deck__coin-dot { position: absolute; left: -1px; top: 14px; z-index: 0; width: 14px; height: 14px; border-radius: 50%; background: var(--yellow); border: 2px solid #cc991a; opacity: 0; }
+.deck__coin-text { font-family: var(--font-pixel); font-size: 0.8rem; letter-spacing: 1px; color: #4a4f5e; }
+
+/* ============================================================
+   Animation states (progressive enhancement)
+   - default: content visible (no JS / reduced motion)
+   - .about-armed (JS adds): screen "off", loading shown
+   - .about-started (JS adds on scroll-in): the sequence plays
+   ============================================================ */
+.about-armed .screen__body { opacity: 0; }
+.about-armed .screen__loading { display: flex; }
+.about-armed .screen__prompt { animation: about-blink 1s steps(1) infinite; }
+.about-armed .cabinet__screen { cursor: pointer; }
+.about-started .cabinet__screen { cursor: default; }
+
+/* sequence (plays on press): coin drops into slot -> pacman crosses -> power on */
+.about-started .deck__coin-dot { animation: about-coin-insert 0.9s ease-out both; }
+.about-started .screen__crosser { animation: about-cross 2s linear 1s forwards; }
+.about-started .screen__pellet { animation: about-eat 0.12s linear var(--eat, 0s) both; }
+.about-started .screen__loading { animation: about-fade-away 0.35s ease 3s forwards; }
+.about-started .screen__body { animation: about-power-on 0.6s ease 3.1s forwards; }
+.about-started .cabinet__screen { animation: about-crt 0.5s ease 3.1s; }
+
+@keyframes about-blink { 0%, 55% { opacity: 1; } 56%, 100% { opacity: 0.25; } }
+@keyframes about-coin-insert {
+    0% { transform: translateX(-30px); opacity: 0; }
+    20% { transform: translateX(-30px); opacity: 1; }
+    100% { transform: translateX(2px); opacity: 0; }
+}
+@keyframes about-cross { from { left: 5%; } to { left: 100%; } }
+@keyframes about-eat { to { opacity: 0; transform: translate(-50%, -50%) scale(0); } }
+@keyframes about-fade-away { to { opacity: 0; visibility: hidden; } }
+@keyframes about-power-on {
+    0% { opacity: 0; filter: brightness(2.2); }
+    35% { opacity: 1; filter: brightness(0.6); }
+    70% { filter: brightness(1.25); }
+    100% { opacity: 1; filter: brightness(1); }
+}
+@keyframes about-crt {
+    0% { filter: brightness(0.4); }
+    20% { filter: brightness(1.7); }
+    45% { filter: brightness(0.7); }
+    100% { filter: brightness(1); }
+}
+
+/* ---- responsive / motion ---- */
+@media (max-width: 860px) {
+    #about { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .about-armed .screen__body { opacity: 1; }
+    .about-armed .screen__loading { display: none; }
+    .about-started .deck__coin-dot,
+    .about-started .screen__crosser,
+    .about-started .screen__pellet,
+    .about-started .screen__loading,
+    .about-started .screen__body,
+    .about-started .cabinet__screen { animation: none; }
+}

@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initScrollSpy();
     initExperienceTabs();
     initReveal();
+    initAboutArcade();
     initCursorGlow();
 });
 
@@ -109,6 +110,59 @@ function initReveal() {
         { threshold: 0.01 }
     );
     items.forEach((el) => observer.observe(el));
+}
+
+/* ---- About arcade cabinet: arm on load, play the coin->cross->power-on
+   sequence when it scrolls into view (progressive enhancement) ---- */
+function initAboutArcade() {
+    const section = document.getElementById("about");
+    if (!section) return;
+    const screen = section.querySelector(".cabinet__screen");
+    if (!screen) return;
+    // reduced motion: leave the screen powered-on, no animation
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    section.classList.add("about-armed"); // screen "off"; PRESS START shown
+    screen.setAttribute("role", "button");
+    screen.setAttribute("tabindex", "0");
+    screen.setAttribute("aria-label", "Press start to power on the About screen");
+
+    // build the pellet trail; each pellet is "eaten" as the pacman reaches it.
+    // pacman crosses the track over CROSS_DUR starting at CROSS_DELAY (must match about.css)
+    const track = section.querySelector(".screen__track");
+    if (track) {
+        // pacman starts at START% (a little in from the edge, clear of the first
+        // pellet); pellets span FIRST%..LAST%. each pellet is eaten when the
+        // pacman's left reaches it. all percentages are of the track width.
+        const PELLETS = 10, CROSS_DELAY = 1, CROSS_DUR = 2, START = 5, FIRST = 14, LAST = 100;
+        for (let i = 0; i < PELLETS; i++) {
+            const f = i / (PELLETS - 1);
+            const pct = FIRST + f * (LAST - FIRST);
+            const pellet = document.createElement("span");
+            pellet.className = "screen__pellet";
+            pellet.style.left = `${pct}%`;
+            const eat = CROSS_DELAY + ((pct - START) / (100 - START)) * CROSS_DUR;
+            pellet.style.setProperty("--eat", `${eat.toFixed(2)}s`);
+            track.appendChild(pellet);
+        }
+    }
+
+    const start = () => {
+        section.classList.add("about-started"); // play coin -> pacman -> power-on
+        screen.removeAttribute("role");
+        screen.removeAttribute("tabindex");
+        screen.removeAttribute("aria-label");
+        screen.removeEventListener("click", start);
+        screen.removeEventListener("keydown", onKey);
+    };
+    const onKey = (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            start();
+        }
+    };
+    screen.addEventListener("click", start);
+    screen.addEventListener("keydown", onKey);
 }
 
 /* ---- soft pacman-yellow glow that follows the cursor ---- */

@@ -170,10 +170,11 @@ button {
     --pac-size: 110px;
     width: var(--pac-size);
     height: var(--pac-size);
-    background: var(--yellow);
     border-radius: 50%;
-    /* circle with a wedge mouth cut out, facing right */
-    clip-path: polygon(50% 50%, 100% 32%, 100% 0, 0 0, 0 100%, 100% 100%, 100% 68%);
+    /* round body via border-radius; the wedge mouth (facing right) is a
+       transparent slice of a conic-gradient so the background shows through.
+       (a clip-path here would override border-radius and square the corners) */
+    background: conic-gradient(var(--yellow) 0 70deg, transparent 70deg 110deg, var(--yellow) 110deg 360deg);
     flex: none;
 }
 .pac-dot {

@@ -17,7 +17,7 @@
     content: "";
     position: absolute;
     inset: 22px;
-    border: 2.5px solid rgba(61, 90, 241, 0.4);
+    border: 2.5px solid rgba(102, 110, 128, 0.21);
     border-radius: 18px;
     pointer-events: none;
 }
