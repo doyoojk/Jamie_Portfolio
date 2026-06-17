@@ -8,7 +8,10 @@
       "blurb": "Interactive art piece that reads facial emotion with computer vision and paints it with Python turtle.",
       "accent": "#8b5cf6",
       "repoUrl": "https://github.com/doyoojk/Emotion-Detection-Art",
-      "media": "assets/projects/emotion-detection-art.gif"
+      "video": {
+        "mp4": "assets/projects/emotion-detection-art.mp4"
+      },
+      "poster": "assets/projects/emotion-detection-art.jpg"
     },
     {
       "id": "animated-kitty",
@@ -17,7 +20,10 @@
       "blurb": "Generative animation sketch built in Processing.",
       "accent": "#ff8c4d",
       "repoUrl": "https://github.com/doyoojk/Animated-Kitty",
-      "media": "assets/projects/animated-kitty.gif"
+      "video": {
+        "mp4": "assets/projects/animated-kitty.mp4"
+      },
+      "poster": "assets/projects/animated-kitty.jpg"
     },
     {
       "id": "virtual-space-sim",
@@ -26,7 +32,10 @@
       "blurb": "An interactive virtual space simulator.",
       "accent": "#4d6bd9",
       "repoUrl": "https://github.com/doyoojk/VitrualSpaceSimulator",
-      "media": "assets/projects/virtual-space-sim.gif"
+      "video": {
+        "mp4": "assets/projects/virtual-space-sim.mp4"
+      },
+      "poster": "assets/projects/virtual-space-sim.jpg"
     },
     {
       "id": "road-kill",
@@ -35,7 +44,10 @@
       "blurb": "An arcade-style road-crossing game built in Java.",
       "accent": "#c86bd9",
       "repoUrl": "https://github.com/doyoojk/Road-Kill",
-      "media": "assets/projects/road-kill.gif"
+      "video": {
+        "mp4": "assets/projects/road-kill.mp4"
+      },
+      "poster": "assets/projects/road-kill.jpg"
     },
     {
       "id": "loop-subdivision",
@@ -44,7 +56,10 @@
       "blurb": "Loop subdivision surface smoothing for 3D meshes.",
       "accent": "#26b3a8",
       "repoUrl": "https://github.com/doyoojk/loop_subdivision",
-      "media": "assets/projects/loop-subdivision.gif"
+      "video": {
+        "mp4": "assets/projects/loop-subdivision.mp4"
+      },
+      "poster": "assets/projects/loop-subdivision.jpg"
     },
     {
       "id": "cat-fall",
@@ -53,7 +68,10 @@
       "blurb": "Retro-style kitty fall game for a Game Boy Advance emulator.",
       "accent": "#f56b6b",
       "repoUrl": "https://github.com/doyoojk/Cat-Fall",
-      "media": "assets/projects/cat-fall.gif"
+      "video": {
+        "mp4": "assets/projects/cat-fall.mp4"
+      },
+      "poster": "assets/projects/cat-fall.jpg"
     },
     {
       "id": "atl-path-finder",

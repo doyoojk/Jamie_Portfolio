@@ -41,23 +41,20 @@ def main():
             continue
 
         base = os.path.join(ASSETS, p["id"])
-        even = "scale=trunc(iw/2)*2:trunc(ih/2)*2"
+        # cap width at 720 (keeps it small) and force even dimensions for h264
+        scale = "scale='min(720,iw)':-2"
 
-        # mp4 (h264)
+        # mp4 (h264) — plays everywhere; webm intentionally skipped (mp4 is enough)
         run(["ffmpeg", "-y", "-i", abs_src, "-movflags", "+faststart",
-             "-pix_fmt", "yuv420p", "-vf", even, "-an", f"{base}.mp4"])
-        # webm (vp9)
-        run(["ffmpeg", "-y", "-i", abs_src, "-c:v", "libvpx-vp9",
-             "-b:v", "0", "-crf", "34", "-vf", even, "-an", f"{base}.webm"])
+             "-pix_fmt", "yuv420p", "-vf", scale, "-crf", "30", "-an", f"{base}.mp4"])
         # poster (first frame)
-        run(["ffmpeg", "-y", "-i", abs_src, "-vframes", "1", f"{base}.jpg"])
+        run(["ffmpeg", "-y", "-i", abs_src, "-vf", scale, "-frames:v", "1", f"{base}.jpg"])
 
-        p["video"] = {
-            "mp4": f"assets/projects/{p['id']}.mp4",
-            "webm": f"assets/projects/{p['id']}.webm",
-        }
+        p["video"] = {"mp4": f"assets/projects/{p['id']}.mp4"}
         p["poster"] = f"assets/projects/{p['id']}.jpg"
-        print(f"  ✓ {p['id']}: mp4 + webm + poster")
+        p.pop("media", None)  # drop the now-unused gif reference
+        os.remove(abs_src)    # remove the source gif (replaced by mp4)
+        print(f"  ✓ {p['id']}: mp4 + poster")
 
     with open(PROJECTS_JSON, "w") as f:
         json.dump(data, f, indent=2)
