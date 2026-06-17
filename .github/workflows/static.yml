@@ -11,7 +11,6 @@ on:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: write
   pages: write
   id-token: write
 
@@ -33,24 +32,6 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-
-      - name: Fetch GitHub repos
-        run: |
-          curl -H "Authorization: token ${{ secrets.MY_TOKEN }}" -H "Accept: application/vnd.github.v3+json" \
-          https://api.github.com/users/doyoojk/repos > repos.json
-
-      - name: Commit data
-        run: |
-          git config --global user.name 'GitHub Actions'
-          git config --global user.email 'actions@github.com'
-          git add repos.json
-          git commit -m "Update repos.json"
-          git push
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
